@@ -138,9 +138,42 @@ add_action( 'widgets_init', 'forsage_widgets_init' );
  * Enqueue scripts and styles.
  */
 function forsage_scripts() {
+	// Enqueue Google Fonts
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap', array(), null );
+
+	// Enqueue Tailwind CSS via CDN (Development Mode)
+	wp_enqueue_script( 'tailwind-cdn', 'https://cdn.tailwindcss.com', array(), null, false );
+	
+	// Configure Tailwind
+	wp_add_inline_script( 'tailwind-cdn', "
+		tailwind.config = {
+			theme: {
+				container: {
+					center: true,
+					padding: '20px',
+					screens: {
+						sm: '640px',
+						md: '768px',
+						lg: '1024px',
+						xl: '1240px',
+						'2xl': '1240px',
+					}
+				},
+				extend: {
+					fontFamily: {
+						manrope: ['Manrope', 'sans-serif'],
+					},
+					colors: {
+						'brand-red': '#D32F2F',
+						'brand-red-hover': '#B71C1C',
+					}
+				},
+			}
+		}
+	" );
+
+	// Keep style.css for theme metadata and fallback
 	wp_enqueue_style( 'forsage-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'forsage-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'forsage-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -176,4 +209,9 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Custom Post Types
+ */
+require get_template_directory() . '/inc/cpt-routes.php';
 

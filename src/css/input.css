@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-manrope text-gray-900;
+  }
+}
+
+@layer components {
+    .container {
+        @apply max-w-[1200px] mx-auto px-[15px];
+    }
+}
