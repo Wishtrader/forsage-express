@@ -10,7 +10,7 @@ get_header();
 
 <main id="primary" class="site-main bg-white">
 	<!-- Hero Section -->
-	<section class="relative pt-12 pb-24 md:pt-28 md:pb-40 overflow-hidden">
+	<section class="relative pt-12 pb-4 md:pt-28 md:pb-[80px] overflow-hidden">
 		
 		<!-- Background Elements (Road/Path) -->
 		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1400px] pointer-events-none z-0">
@@ -23,13 +23,13 @@ get_header();
 				<!-- Left Content (Text) - Spans 5 columns -->
 				<div class="lg:col-span-6 relative z-20">
 					<!-- Badge -->
-					<div class="inline-flex items-center gap-2.5 bg-[#FFF0F3] border border-[#FECDD3] rounded-2xl px-4 py-2 mb-8">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/rocket-outline.svg" class="w-5 h-5 text-[#E11D48]">
-						<span class="text-[#E11D48] text-[13px] md:text-[14px] font-bold">Быстро·Комфортно·Надёжно</span>
+					<div class="inline-flex items-center gap-2.5 bg-[#FFF0F3] border rounded-[8px] px-4 py-3 mb-8">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/rocket-outline.svg" class="w-[24px] h-[24px] text-[#B81B22]">
+						<span class="text-[#B81B22] text-[13px] md:text-[16px] font-medium">Быстро·Комфортно·Надёжно</span>
 					</div>
 					
 					<!-- H1 Title -->
-					<h1 class="text-[36px] md:text-40px] leading-[1.1] font-semibold text-[#111827] mb-6 tracking-tight">
+					<h1 class="text-[36px] lg:text-40px] leading-[1.1] font-semibold text-[#111827] mb-6 tracking-tight">
 						Комфортные междугородние <br> <span class="text-[#D6232A]">перевозки</span> по Беларуси
 					</h1>
 
@@ -61,7 +61,11 @@ get_header();
 					<!-- From -->
 					<div class="flex-1 relative px-4 py-2 border-r border-gray-100">
 						<label class="block text-[11px] text-gray-400 mb-1">Откуда?</label>
-						<input type="text" value="Минск" class="w-full font-bold text-gray-800 outline-none text-[15px]">
+						<select class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
+							<option value="Минск">Минск</option>
+							<option value="Чашники">Чашники</option>
+							<option value="Сенно">Сенно</option>
+						</select>
 						
 						<!-- Swap Button Centered on Border -->
 						<button class="absolute top-1/2 -translate-y-1/2 right-[-14px] w-7 h-7 bg-[#FEF2F2] rounded-full border border-white shadow-sm flex items-center justify-center z-10 text-[#D32F2F] hover:bg-red-100">
@@ -72,31 +76,40 @@ get_header();
 					<!-- To -->
 					<div class="flex-1 px-4 py-2 border-r border-gray-100 pl-8">
 						<label class="block text-[11px] text-gray-400 mb-1">Куда?</label>
-						<input type="text" value="Чашники" class="w-full font-bold text-gray-800 outline-none text-[15px]">
+						<select class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
+							<option value="Чашники">Чашники</option>
+							<option value="Минск">Минск</option>
+							<option value="Сенно">Сенно</option>
+						</select>
 					</div>
 
 					<!-- Date -->
 					<div class="flex-1 px-4 py-2 border-r border-gray-100">
 						<label class="block text-[11px] text-gray-400 mb-1">Когда?</label>
-						<div class="flex items-center justify-between">
-							<span class="font-bold text-gray-800 text-[15px]">24 ноября</span>
-						</div>
+						<input id="hero-date-when" type="text" class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent cursor-pointer placeholder-gray-800" value="24 ноября">
 					</div>
 
 					<!-- Return -->
 					<div class="flex-1 px-4 py-2 border-r border-gray-100">
 						<label class="block text-[11px] text-gray-400 mb-1">Обратно</label>
-						<input type="text" placeholder="Обратно" class="w-full font-bold text-gray-800 outline-none text-[15px] placeholder-gray-300">
+						<input id="hero-date-return" type="text" placeholder="Укажите дату" class="w-full font-bold text-gray-800 outline-none text-[15px] placeholder-gray-300 bg-transparent cursor-pointer">
 					</div>
 
 					<!-- Passengers -->
 					<div class="flex-1 px-4 py-2">
 						<label class="block text-[11px] text-gray-400 mb-1">Пассажиры</label>
-						<div class="flex items-center justify-between cursor-pointer">
-							<span class="font-bold text-gray-800 text-[15px]">1 пассажир</span>
-							<svg class="w-4 h-4 text-[#D32F2F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-							</svg>
+						<div class="relative">
+							<select class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer pr-6 relative z-10">
+								<option value="1">1 пассажир</option>
+								<option value="2">2 пассажира</option>
+								<option value="3">3 пассажира</option>
+								<option value="4">4 пассажира</option>
+							</select>
+							<div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+								<svg class="w-4 h-4 text-[#D32F2F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+								</svg>
+							</div>
 						</div>
 					</div>
 
@@ -109,10 +122,10 @@ get_header();
 				</div>
 				<!-- Buttons -->
 					<div class="flex flex-col sm:flex-row gap-4 mt-[24px]">
-						<a href="#routes" class="inline-flex justify-center items-center bg-[#D32F2F] text-white px-8 py-3.5 rounded-lg font-bold hover:bg-[#B71C1C] transition-all text-[15px] shadow-sm">
+						<a href="#routes" class="inline-flex justify-center items-center bg-[#D32F2F] text-white px-3 py-2 rounded-lg font-medium hover:bg-[#B71C1C] transition-all text-[16px] shadow-sm min-w-[204px] min-h-[48px]">
 							Посмотреть маршруты
 						</a>
-						<a href="#contacts" class="inline-flex justify-center items-center bg-white text-[#111827] border border-[#E5E7EB] px-8 py-3.5 rounded-lg font-bold hover:bg-gray-50 transition-all text-[15px]">
+						<a href="#contacts" class="inline-flex justify-center items-center bg-white text-[#111827] border border-[#D6232A] px-3 py-2 rounded-lg font-medium hover:bg-gray-50 transition-all text-[16px] shadow-sm min-w-[204px] min-h-[48px]">
 							Связаться с нами
 						</a>
 					</div>
@@ -123,20 +136,33 @@ get_header();
 				<div class="flex flex-col gap-4">
 					<div class="relative">
 						<label class="text-[11px] text-gray-400">Откуда?</label>
-						<input type="text" value="Минск" class="w-full font-bold border-b border-gray-200 py-2 outline-none">
+						<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
+							<option value="Минск">Минск</option>
+							<option value="Чашники">Чашники</option>
+							<option value="Сенно">Сенно</option>
+						</select>
 					</div>
 					<div class="relative">
 						<label class="text-[11px] text-gray-400">Куда?</label>
-						<input type="text" value="Чашники" class="w-full font-bold border-b border-gray-200 py-2 outline-none">
+						<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
+							<option value="Чашники">Чашники</option>
+							<option value="Минск">Минск</option>
+							<option value="Сенно">Сенно</option>
+						</select>
 					</div>
 					<div class="grid grid-cols-2 gap-4">
 						<div>
 							<label class="text-[11px] text-gray-400">Когда?</label>
-							<div class="font-bold border-b border-gray-200 py-2">24 ноября</div>
+							<input id="mobile-date-when" type="text" class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent" value="24 ноября">
 						</div>
 						<div>
 							<label class="text-[11px] text-gray-400">Пассажиры</label>
-							<div class="font-bold border-b border-gray-200 py-2">1 пассажир</div>
+							<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
+								<option value="1">1 пассажир</option>
+								<option value="2">2 пассажира</option>
+								<option value="3">3 пассажира</option>
+								<option value="4">4 пассажира</option>
+							</select>
 						</div>
 					</div>
 					<button class="w-full bg-[#D32F2F] text-white font-bold py-3 rounded-lg mt-2">
@@ -145,10 +171,49 @@ get_header();
 				</div>
 			</div>
 
+	<!-- Flatpickr -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<style>
+		.flatpickr-calendar {
+			border-radius: 16px;
+			box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+			border: none;
+			font-family: inherit;
+		}
+		.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
+			background: #D32F2F;
+			border-color: #D32F2F;
+		}
+		.flatpickr-months .flatpickr-month {
+			color: #111827;
+			fill: #111827;
+		}
+		.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+			background-color: transparent;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const config = {
+			locale: "ru",
+			dateFormat: "j F",
+			minDate: "today",
+			disableMobile: "true",
+			defaultDate: "today"
+		};
+		
+		flatpickr("#hero-date-when", config);
+		flatpickr("#hero-date-return", { ...config, defaultDate: null });
+		flatpickr("#mobile-date-when", config);
+	});
+	</script>
+
 		</div>
 	</section>
 
-	<section id="routes" class="bg-white py-20 md:py-28 relative">
+	<section id="routes" class="relative">
 		<div class="container mx-auto px-4">
 			
 			<h2 class="text-[32px] md:text-[40px] font-bold text-center mb-10 text-[#111827]">Регулярные маршруты</h2>
@@ -416,41 +481,950 @@ get_header();
 	<!-- Note: We also need to update the Javascript to be dynamic. Since we use the slug in IDs, the existing script function switchTab needs to know ALL tabs. -->
 	<!-- We can output a small inline array of slugs for JS to use. -->
 	<?php if( !empty($first_slug) ) : 
-		// Need to get all slugs again for JS
+		// We need to re-loop or data is already lost? 
+		// Actually, we can collect data during the FIRST loop if we structure it right, 
+		// but we used rewinds. Let's just do a clean data collection query/loop here to be safe and clean.
+		
 		$all_slugs_js = array();
-		$routes_query = new WP_Query( $args ); // Re-run lightweight query or just use what we had
+		$routes_map_data = array();
+		
+		$routes_query = new WP_Query( $args ); 
 		while($routes_query->have_posts()){ 
-			$routes_query->the_post(); 
-			$all_slugs_js[] = get_post_field('post_name'); 
+			$routes_query->the_post();
+			$pid = get_the_ID(); 
+			$slug = get_post_field('post_name'); 
+			$all_slugs_js[] = $slug;
+			
+			// Get stops for map
+			$raw_stops = get_field('stops_text', $pid);
+			$stops_arr = array();
+			if ($raw_stops) {
+				$lines = preg_split('/\r\n|\r|\n/', $raw_stops);
+				foreach($lines as $line){
+					$line = trim($line);
+					if(empty($line)) continue;
+					// Clean * from name
+					$name = str_replace('*', '', $line);
+					$stops_arr[] = $name;
+				}
+			}
+			$routes_map_data[$slug] = $stops_arr;
 		}
 		wp_reset_postdata();
 	?>
+
+	<!-- Map Section -->
+	<section class="mb-20">
+		<div class="container mx-auto px-4">
+			<h2 class="text-[32px] md:text-[40px] font-bold text-center mb-10 text-[#111827]">Остановки по маршруту</h2>
+			
+			<div class="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-4">
+				<div id="route-map" class="w-full h-full bg-gray-100"></div>
+			</div>
+			
+			<!-- Debug Log (Temporary) -->
+			<div id="map-debug" class="bg-gray-800 text-green-400 p-4 rounded text-xs font-mono h-32 overflow-y-auto hidden"></div>
+		</div>
+	</section>
+
+	<!-- Services Section -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Наши услуги</h2>
+				<p class="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto">Полный спектр пассажирских перевозок для комфортных и безопасных поездок</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- Card 1: Regular Routes -->
+				<div class="group bg-white rounded-3xl p-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100">
+					<!-- Image Area -->
+					<div class="relative bg-gray-100 rounded-2xl overflow-hidden h-48 mb-6">
+						<!-- Icon Badge -->
+						<div class="absolute top-4 left-4 bg-white p-2.5 rounded-xl shadow-sm z-10">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" alt="Icon" class="w-6 h-6 text-[#D32F2F]">
+						</div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/bus2.png" alt="Bus" class="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500">
+					</div>
+
+					<!-- Content -->
+					<div class="px-4 pb-6">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">Регулярные рейсы</h3>
+						<p class="text-[15px] text-gray-500 leading-relaxed mb-6">
+							Ежедневные поездки по маршрутам Минск — Чашники и Минск — Сенно с гарантированным расписанием.
+						</p>
+						
+						<ul class="space-y-2">
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Удобное расписание
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Комфортные автобусы
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Онлайн-бронирование
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Card 2: Order Bus -->
+				<div class="group bg-white rounded-3xl p-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100">
+					<!-- Image Area -->
+					<div class="relative bg-gray-100 rounded-2xl overflow-hidden h-48 mb-6">
+						<!-- Icon Badge -->
+						<div class="absolute top-4 left-4 bg-white p-2.5 rounded-xl shadow-sm z-10">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/people.svg" alt="Icon" class="w-6 h-6">
+						</div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/bus2.png" alt="Bus" class="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500">
+					</div>
+
+					<!-- Content -->
+					<div class="px-4 pb-6">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">Заказ автобусов</h3>
+						<p class="text-[15px] text-gray-500 leading-relaxed mb-6">
+							Организация групповых поездок по всей Беларуси. Современные автобусы для корпоративов, экскурсий и мероприятий.
+						</p>
+						
+						<ul class="space-y-2">
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Любые маршруты
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Гибкое расписание
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Опытные водители
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Card 3: International -->
+				<div class="group bg-white rounded-3xl p-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100">
+					<!-- Image Area -->
+					<div class="relative bg-gray-100 rounded-2xl overflow-hidden h-48 mb-6">
+						<!-- Icon Badge -->
+						<div class="absolute top-4 left-4 bg-white p-2.5 rounded-xl shadow-sm z-10">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/world.svg" alt="Icon" class="w-6 h-6">
+						</div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/bus2.png" alt="Bus" class="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-500">
+					</div>
+
+					<!-- Content -->
+					<div class="px-4 pb-6">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">Международные рейсы</h3>
+						<p class="text-[15px] text-gray-500 leading-relaxed mb-6">
+							Комфортные поездки в Россию. Регулярные рейсы в популярные города с полным пакетом документов.
+						</p>
+						
+						<ul class="space-y-2">
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Рейсы в РФ
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Удобные остановки
+							</li>
+							<li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+								<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F]"></span>
+								Помощь с документами
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Choose Us Section -->
+	<section class="py-20 bg-gray-50">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Почему выбирают нас</h2>
+				<p class="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto">Мы заботимся о каждом пассажире и создаём условия для приятного путешествия</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<!-- Item 1: Safety -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/security-safe.svg" alt="Safety" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Безопасность превыше всего</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Профессиональные водители с большим стажем и регулярное техническое обслуживание автобусов
+					</p>
+				</div>
+
+				<!-- Item 2: Punctuality -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/clock.svg" alt="Clock" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Пунктуальность</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Мы ценим ваше время. Отправление и прибытие строго по расписанию, без задержек и ожидания.
+					</p>
+				</div>
+
+				<!-- Item 3: WiFi -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/wifi.svg" alt="WiFi" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Бесплатный Wi-Fi</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Оставайтесь на связи во время поездки с высокоскоростным интернетом.
+					</p>
+				</div>
+
+				<!-- Item 4: Comfort -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/tea-drink.svg" alt="Comfort" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Комфорт в пути</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Удобные кресла, кондиционер и регулярные остановки для отдыха.
+					</p>
+				</div>
+
+				<!-- Item 5: Climate -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/snowflake.svg" alt="Climate" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Климат-контроль</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Современные системы вентиляции и кондиционирования для вашего комфорта.
+					</p>
+				</div>
+
+				<!-- Item 6: Quality -->
+				<div class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/check.svg" alt="Quality" class="w-7 h-7">
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Гарантия качества</h3>
+					<p class="text-gray-500 leading-relaxed">
+						Более 10 лет безупречной работы и тысячи довольных пассажиров.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Statistics Section -->
+	<section class="w-full h-auto md:h-[150px] bg-[#D32F2F] text-white flex items-center py-8 md:py-0">
+		<div class="container mx-auto px-4">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-white/10 md:divide-none">
+				
+				<div class="flex flex-col items-center justify-center">
+					<div class="text-3xl md:text-[40px] font-bold mb-2 leading-none">15 000+</div>
+					<div class="text-sm md:text-base opacity-90 font-medium">Пассажиров в год</div>
+				</div>
+
+				<div class="flex flex-col items-center justify-center">
+					<div class="text-3xl md:text-[40px] font-bold mb-2 leading-none">99.8%</div>
+					<div class="text-sm md:text-base opacity-90 font-medium">Рейсов вовремя</div>
+				</div>
+
+				<div class="flex flex-col items-center justify-center">
+					<div class="text-3xl md:text-[40px] font-bold mb-2 leading-none">24/7</div>
+					<div class="text-sm md:text-base opacity-90 font-medium">Поддержка клиентов</div>
+				</div>
+
+				<div class="flex flex-col items-center justify-center">
+					<div class="text-3xl md:text-[40px] font-bold mb-2 leading-none">15+</div>
+					<div class="text-sm md:text-base opacity-90 font-medium">Современных автобусов</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Rules Section -->
+	<section class="py-20 bg-gray-50">
+		<div class="container mx-auto px-4 max-w-[1200px]">
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Правила проезда</h2>
+				<p class="text-gray-500 text-lg md:text-xl max-w-4xl mx-auto">
+					Перед поездкой, пожалуйста, ознакомьтесь с основными правилами проезда пассажиров, детей и животных. Подробные условия можно уточнить у оператора при бронировании.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- Card 1: Children -->
+				<div class="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<h3 class="text-lg font-bold text-gray-900 mb-4 flex items-start gap-3">
+						<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F] mt-2.5 flex-shrink-0"></span>
+						Порядок проезда детей до 3 лет
+					</h3>
+					<p class="text-[15px] text-gray-500 leading-relaxed">
+						Проезд детей до 3 лет – пассажир имеет возможность провозить одного ребенка до 3 лет бесплатно, без предоставления отдельного места ребенку, при условии предъявления документа, подтверждающего возраст ребенка.
+					</p>
+				</div>
+
+				<!-- Card 2: Animals -->
+				<div class="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<h3 class="text-lg font-bold text-gray-900 mb-4 flex items-start gap-3">
+						<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F] mt-2.5 flex-shrink-0"></span>
+						Правила провоза животных
+					</h3>
+					<p class="text-[15px] text-gray-500 leading-relaxed">
+						Допускается провоз мелких домашних животных в переноске или сумке с непромокаемым дном, при наличии ветеринарной справки. Животное провозится бесплатно, как ручная кладь. Пассажир обязан предупредить менеджера колл-центра, или указать в примечании к заказу (при онлайн заказе) о необходимости провоза животного.
+					</p>
+				</div>
+
+				<!-- Card 3: Documents -->
+				<div class="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+					<h3 class="text-lg font-bold text-gray-900 mb-4 flex items-start gap-3">
+						<span class="w-1.5 h-1.5 rounded-full bg-[#D32F2F] mt-2.5 flex-shrink-0"></span>
+						<span>Выдаются ли документы командировочным?</span>
+					</h3>
+					<p class="text-[15px] text-gray-500 leading-relaxed">
+						При оплате проезда, Вам будут выданы документы, подтверждающие факт принятия денег.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How to Book Section -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4 max-w-[1200px]">
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827]">Как забронировать поездку</h2>
+			</div>
+
+			<div class="relative">
+				<!-- Connecting Line (Desktop Only) -->
+				<div class="hidden md:block absolute top-[24px] left-[10%] right-[10%] h-[1px] bg-red-100 z-0"></div>
+
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+					<!-- Step 1 -->
+					<div class="flex flex-col items-center text-center">
+						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="w-5 h-5">
+						</div>
+						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Позвоните или оставьте заявку на сайте</h3>
+						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+							Свяжитесь с нами удобным способом: телефон, мессенджер, онлайн заявка
+						</p>
+					</div>
+
+					<!-- Step 2 -->
+					<div class="flex flex-col items-center text-center">
+						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/calendar.svg" alt="Calendar" class="w-5 h-5">
+						</div>
+						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Выбор рейса и времени</h3>
+						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+							Уточняем маршрут, дату и время отправления
+						</p>
+					</div>
+
+					<!-- Step 3 -->
+					<div class="flex flex-col items-center text-center">
+						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/check.svg" alt="Check" class="w-5 h-5">
+						</div>
+						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Подтверждение брони</h3>
+						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+							Резервируем место и отправляем подтверждение
+						</p>
+					</div>
+
+					<!-- Step 4 -->
+					<div class="flex flex-col items-center text-center">
+						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" alt="Bus" class="w-5 h-5">
+						</div>
+						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Поездка</h3>
+						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+							Приезжайте к месту отправления и комфортно путешествуйте
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Our Buses Section -->
+	<section class="py-20 bg-gray-50">
+		<div class="container mx-auto px-4 max-w-[1200px]">
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Наши автобусы</h2>
+				<p class="text-gray-500 text-lg md:text-xl max-w-4xl mx-auto">
+					Мы подбираем транспорт под вашу задачу — от ежедневных рейсов до поездок для больших групп. Все машины проходят регулярное обслуживание и готовы к дальним поездкам.
+				</p>
+			</div>
+
+			<div class="flex flex-col gap-20">
+				<!-- Block 1: Regular Routes -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<!-- Carousel 1 -->
+					<div class="relative group">
+						<div class="carousel-container relative overflow-hidden rounded-3xl h-[300px] md:h-[400px]" id="carousel-1">
+							<!-- Added bg-gray-200 placeholder to prevent collapse if image missing -->
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/b1.png" alt="Bus 1" class="w-full h-full object-cover">
+							</div>
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/b2.png" alt="Bus 2" class="w-full h-full object-cover">
+							</div>
+						</div>
+						<!-- Controls -->
+						<div class="flex gap-4 mt-6">
+							<button onclick="busPrevSlide('carousel-1')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 10H39M10 10L19 1M10 10L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+							<button onclick="busNextSlide('carousel-1')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10H1M30 10L21 1M30 10L21 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+						</div>
+					</div>
+
+					<!-- Content -->
+					<div class="pl-8 relative border-l-2 border-[#D32F2F]">
+						<div class="absolute -top-1 -left-3 bg-gray-50 py-1">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900 mb-6">Автобусы для регулярных рейсов</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed">
+							<p>Для ежедневных маршрутов Минск — Чашники и Минск — Сенно мы используем удобные автобусы с аккуратным салоном. В салоне комфортно сидеть даже в дороге, предусмотрены полки для ручной клади и достаточно места для ног.</p>
+							<p>Комфортная посадка, мягкий ход и регулярное обслуживание транспорта позволяют спокойно добираться до работы, учёбы или домой без лишнего стресса.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Block 2: Chartered -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<!-- Content (Order swapped on desktop) -->
+					<div class="order-2 lg:order-1 pr-8 relative border-r-2 border-[#D32F2F] text-right">
+						<div class="absolute -top-1 -right-3 bg-gray-50 py-1">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900 mb-6">Автобусы под заказ для групп и мероприятий</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed">
+							<p>Для корпоративных выездов, экскурсий, свадеб и других мероприятий мы предлагаем автобусы под заказ. Мы подбираем транспорт под количество пассажиров и маршрут, чтобы всем было удобно и в салоне, и при посадке.</p>
+							<p>В салоне достаточно места для багажа и личных вещей, а наш водитель заранее продумывает маршрут с учётом времени и остановок.</p>
+						</div>
+					</div>
+
+					<!-- Carousel 2 -->
+					<div class="order-1 lg:order-2 relative group">
+						<div class="carousel-container relative overflow-hidden rounded-3xl h-[300px] md:h-[400px]" id="carousel-2">
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/b3.png" alt="Bus 3" class="w-full h-full object-cover">
+							</div>
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/bus2.png" alt="Bus 4" class="w-full h-full object-cover">
+							</div>
+						</div>
+						<!-- Controls (Aligned Right) -->
+						<div class="flex gap-4 mt-6 justify-end">
+							<button onclick="busPrevSlide('carousel-2')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 10H39M10 10L19 1M10 10L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+							<button onclick="busNextSlide('carousel-2')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10H1M30 10L21 1M30 10L21 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Block 3: International -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<!-- Carousel 3 -->
+					<div class="relative group">
+						<div class="carousel-container relative overflow-hidden rounded-3xl h-[300px] md:h-[400px]" id="carousel-3">
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/b2.png" alt="Bus 5" class="w-full h-full object-cover">
+							</div>
+							<div class="slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-gray-200">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/b1.png" alt="Bus 6" class="w-full h-full object-cover">
+							</div>
+						</div>
+						<!-- Controls -->
+						<div class="flex gap-4 mt-6">
+							<button onclick="busPrevSlide('carousel-3')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 10H39M10 10L19 1M10 10L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+							<button onclick="busNextSlide('carousel-3')" class="text-[#D32F2F] hover:opacity-70 transition cursor-pointer">
+								<svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10H1M30 10L21 1M30 10L21 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+						</div>
+					</div>
+
+					<!-- Content -->
+					<div class="pl-8 relative border-l-2 border-[#D32F2F]">
+						<div class="absolute -top-1 -left-3 bg-gray-50 py-1">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900 mb-6">Транспорт для дальних и международных поездок</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed">
+							<p>Для международных рейсов и длительных маршрутов мы используем комфортные автобусы, рассчитанные на долгую дорогу. В салоне удобные сиденья, достаточно места для ног и багажа, чтобы поездка проходила максимально спокойно.</p>
+							<p>Перед выездом транспорт проходит техническую проверку, а водитель заранее знакомится с маршрутом, чтобы вы чувствовали себя уверенно на протяжении всей дороги.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<script>
-	function switchTab(selectedSlug) {
-		const allSlugs = <?php echo json_encode($all_slugs_js); ?>;
+	function busNextSlide(containerId) {
+		const container = document.getElementById(containerId);
+		if (!container) return;
 		
+		const slides = container.querySelectorAll('.slide');
+		if (slides.length < 2) return;
+
+		// Find current active
+		let activeIndex = -1;
+		slides.forEach((slide, index) => {
+			if (slide.classList.contains('opacity-100')) {
+				activeIndex = index;
+			}
+		});
+
+		// Hide current
+		if (activeIndex !== -1) {
+			slides[activeIndex].classList.remove('opacity-100', 'z-10');
+			slides[activeIndex].classList.add('opacity-0', 'z-0');
+		}
+
+		// Show next
+		let nextIndex = (activeIndex + 1) % slides.length;
+		slides[nextIndex].classList.remove('opacity-0', 'z-0');
+		slides[nextIndex].classList.add('opacity-100', 'z-10');
+	}
+
+	function busPrevSlide(containerId) {
+		const container = document.getElementById(containerId);
+		if (!container) return;
+
+		const slides = container.querySelectorAll('.slide');
+		if (slides.length < 2) return;
+
+		let activeIndex = -1;
+		slides.forEach((slide, index) => {
+			if (slide.classList.contains('opacity-100')) {
+				activeIndex = index;
+			}
+		});
+
+		if (activeIndex !== -1) {
+			slides[activeIndex].classList.remove('opacity-100', 'z-10');
+			slides[activeIndex].classList.add('opacity-0', 'z-0');
+		}
+
+		let prevIndex = (activeIndex - 1 + slides.length) % slides.length;
+		slides[prevIndex].classList.remove('opacity-0', 'z-0');
+		slides[prevIndex].classList.add('opacity-100', 'z-10');
+	}
+	</script>
+
+	<!-- FAQ Section -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4 max-w-[1200px]">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+				
+				<!-- Left Column: Title & Desc -->
+				<div class="lg:col-span-4">
+					<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-6 leading-tight">Часто задаваемые вопросы</h2>
+					<p class="text-gray-500 text-lg leading-relaxed">
+						Не нашли ответ на свой вопрос? Свяжитесь с нами любым удобным способом, и мы с радостью вам поможем!
+					</p>
+				</div>
+
+				<!-- Right Column: Accordion -->
+				<div class="lg:col-span-8 space-y-4">
+					<!-- Item 1 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как забронировать место в автобусе?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							Вы можете забронировать место онлайн через форму на нашем сайте, позвонить по контактным телефонам диспетчеру или написать нам в мессенджеры (Viber, Telegram, WhatsApp). Бронирование открыто 24/7.
+						</div>
+					</div>
+
+					<!-- Item 2 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие способы оплаты вы принимаете?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							Мы принимаем оплату наличными водителю при посадке, а также поддерживаем онлайн-оплату банковскими картами через систему ЕРИП или на сайте при бронировании (уточняйте доступность у оператора).
+						</div>
+					</div>
+
+					<!-- Item 3 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Можно ли вернуть билет?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							Да, вы можете отменить бронь или вернуть билет бесплатно, если сообщите нам об этом не позднее чем за 24 часа до отправления рейса. В ином случае условия возврата могут варьироваться.
+						</div>
+					</div>
+
+					<!-- Item 4 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Есть ли багажное отделение?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							Да, все наши туристические автобусы оснащены просторными багажными отделениями. Вы можете бесплатно провезти одну единицу основного багажа и ручную кладь в салоне.
+						</div>
+					</div>
+
+					<!-- Item 5 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как заказать автобус для группы?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							Для заказа автобуса под ваше мероприятие (свадьба, экскурсия, корпоратив), пожалуйста, выберите раздел "Заказ автобусов" на сайте или позвоните нашим менеджерам. Мы рассчитаем стоимость индивидуально.
+						</div>
+					</div>
+
+					<!-- Item 6 -->
+					<div class="border-b border-gray-100">
+						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
+							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие документы нужны для поездки в Россию?</span>
+							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div class="hidden pb-6 text-gray-500 leading-relaxed">
+							При пересечении границы с РФ гражданам Беларуси необходим действующий паспорт. Для детей обязательно наличие паспорта или свидетельства о рождении (в зависимости от возраста и текущих правил). Рекомендуем уточнять актуальные требования перед поездкой.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+	function toggleFaq(btn) {
+		const content = btn.nextElementSibling;
+		const icon = btn.querySelector('svg');
+		
+		// Toggle Content
+		if (content.classList.contains('hidden')) {
+			content.classList.remove('hidden');
+			icon.classList.add('rotate-180', 'text-[#D32F2F]');
+		} else {
+			content.classList.add('hidden');
+			icon.classList.remove('rotate-180', 'text-[#D32F2F]');
+		}
+	}
+	</script>
+
+	<!-- Contact Us Section -->
+	<section id="contacts" class="py-20 bg-gray-50">
+		<div class="container mx-auto px-4 max-w-[1200px]">
+			<!-- Header -->
+			<div class="text-center mb-16">
+				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Свяжитесь с нами</h2>
+				<p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">
+					Готовы помочь вам в любое время. Выберите удобный способ связи или оставьте заявку
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+				
+				<!-- Left Column: Info & Messengers -->
+				<div class="space-y-10">
+					<!-- Contact Info List -->
+					<div class="space-y-8">
+						<!-- Address -->
+						<div class="flex items-start gap-6">
+							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/Location.svg" alt="Address" class="w-5 h-5">
+							</div>
+							<div>
+								<p class="text-gray-400 text-sm mb-1">Наш офис</p>
+								<p class="text-gray-900 font-medium text-lg leading-snug">
+									ул. Братская д.11, пом. 380 г. Минск<br>
+									ИН 220065
+								</p>
+							</div>
+						</div>
+
+						<!-- Phones -->
+						<div class="flex items-start gap-6">
+							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="w-5 h-5">
+							</div>
+							<div>
+								<p class="text-gray-400 text-sm mb-2">Телефон</p>
+								<div class="space-y-3">
+									<a href="tel:+375297168556" class="flex items-center gap-3 text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
+										<img src="<?php echo get_template_directory_uri(); ?>/assets/mts.svg" alt="MTS" class="w-5 h-5 object-contain">
+										<span>+375 (29) 716-85-56</span>
+									</a>
+									<a href="tel:+375291935234" class="flex items-center gap-3 text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
+										<img src="<?php echo get_template_directory_uri(); ?>/assets/a1.svg" alt="A1" class="w-5 h-5 object-contain">
+										<span>+375 (29) 193-52-34</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Email -->
+						<div class="flex items-start gap-6">
+							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/mail.svg" alt="Email" class="w-5 h-5">
+							</div>
+							<div>
+								<p class="text-gray-400 text-sm mb-1">E-mail</p>
+								<a href="mailto:info@forsazhexpress.by" class="text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
+									info@forsazhexpress.by
+								</a>
+							</div>
+						</div>
+
+						<!-- Working Hours -->
+						<div class="flex items-start gap-6">
+							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/clock.svg" alt="Time" class="w-5 h-5">
+							</div>
+							<div>
+								<p class="text-gray-400 text-sm mb-1">Режим работы</p>
+								<p class="text-gray-900 font-medium text-lg">
+									Ежедневно: 08:00 — 22:00
+								</p>
+								<p class="text-gray-400 text-sm mt-1">Онлайн-бронирование: 24/7</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Messengers Block -->
+					<div class="bg-[#D32F2F] rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
+						<div class="relative z-10">
+							<h3 class="text-xl font-bold mb-2">Быстрая связь через мессенджеры</h3>
+							<p class="text-red-100 text-sm mb-6">Напишите нам в любой удобный мессенджер — ответим в течение 5 минут</p>
+							
+							<div class="flex flex-wrap gap-4">
+								<a href="#" class="flex items-center gap-2 bg-white text-[#7360F2] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/Viber.svg" alt="Viber" class="w-5 h-5">
+									<span class="text-gray-900">Viber</span>
+								</a>
+								<a href="#" class="flex items-center gap-2 bg-white text-[#0088CC] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/Telegram.svg" alt="Telegram" class="w-5 h-5">
+									<span class="text-gray-900">Telegram</span>
+								</a>
+								<a href="#" class="flex items-center gap-2 bg-white text-[#25D366] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5">
+									<span class="text-gray-900">WhatsApp</span>
+								</a>
+							</div>
+						</div>
+						<!-- Decorative background elements if needed, skipping for cleaner code -->
+					</div>
+				</div>
+
+				<!-- Right Column: Form -->
+				<div class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-8 md:p-10">
+					<h3 class="text-2xl font-bold text-gray-900 mb-2">Оставьте заявку</h3>
+					<p class="text-gray-500 mb-8">Заполните форму, и мы свяжемся с вами в ближайшее время</p>
+					
+					<form class="space-y-6">
+						<div>
+							<label class="block text-gray-700 font-medium mb-2 pl-1">Ваше имя</label>
+							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="">
+						</div>
+						
+						<div>
+							<label class="block text-gray-700 font-medium mb-2 pl-1">Направление</label>
+							<div class="relative">
+								<select class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none appearance-none transition cursor-pointer">
+									<option value="">Выберите направление</option>
+									<option value="minsk-chashniki">Минск — Чашники</option>
+									<option value="chashniki-minsk">Чашники — Минск</option>
+									<option value="minsk-senno">Минск — Сенно</option>
+									<option value="senno-minsk">Сенно — Минск</option>
+								</select>
+								<div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+								</div>
+							</div>
+						</div>
+						
+						<div>
+							<label class="block text-gray-700 font-medium mb-2 pl-1">Дата и время</label>
+							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="дд.мм.гггг">
+						</div>
+						
+						<div>
+							<label class="block text-gray-700 font-medium mb-2 pl-1">Телефон или мессенджер</label>
+							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="">
+						</div>
+						
+						<button type="button" class="w-full bg-[#D32F2F] text-white font-bold text-lg rounded-xl py-4 hover:bg-[#B71C1C] transition shadow-lg mt-4">
+							Отправить заявку
+						</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<!-- Removed empty apikey parameter to enable Dev Mode defaults -->
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script>
+	const allSlugs = <?php echo json_encode($all_slugs_js); ?>;
+	const routesData = <?php echo json_encode($routes_map_data); ?>;
+	const debugEl = document.getElementById('map-debug');
+	
+	function log(msg) {
+		console.log(msg);
+		// Uncomment to show debug on screen
+		// debugEl.classList.remove('hidden');
+		// debugEl.innerHTML += "<div>" + msg + "</div>";
+	}
+
+	let myMap = null;
+	let clusterer = null;
+
+	log('Map Init. Routes Data: ' + JSON.stringify(routesData));
+
+	ymaps.ready(init);
+	function init(){
+		// Center on Belarus roughly
+		myMap = new ymaps.Map("route-map", {
+			center: [53.90, 27.55], // Minsk
+			zoom: 7,
+			controls: ['zoomControl', 'fullscreenControl']
+		});
+		
+		log('Map created.');
+
+		// Render initial route
+		if (allSlugs.length > 0) {
+			updateMap(allSlugs[0]);
+		}
+	}
+
+	function updateMap(slug) {
+		if (!myMap) return;
+		
+		myMap.geoObjects.removeAll();
+		
+		const stops = routesData[slug];
+		log('Updating map for slug: ' + slug + '. Stops found: ' + (stops ? stops.length : 0));
+		
+		if (!stops || stops.length === 0) return;
+
+		// Async add markers via Geocoder
+		const promises = stops.map(stopName => {
+			// Add 'Беларусь' to context to help geocoder
+			const query = stopName + " Беларусь";
+			
+			return ymaps.geocode(query).then(res => {
+				const firstGeoObject = res.geoObjects.get(0);
+				if (firstGeoObject) {
+					const coords = firstGeoObject.geometry.getCoordinates();
+					log('Geocoded: ' + stopName + ' -> ' + coords);
+					
+					const placemark = new ymaps.Placemark(coords, {
+						balloonContentHeader: stopName,
+						balloonContentBody: 'Остановка'
+					}, {
+						preset: 'islands#redDotIcon'
+					});
+					return placemark;
+				}
+				log('Geocoded FAILED (no result): ' + stopName);
+				return null;
+			}).catch(err => {
+				log('Geocoded ERROR: ' + stopName + ' ' + err);
+				return null;
+			});
+		});
+
+		Promise.all(promises).then(placemarks => {
+			const validPlacemarks = placemarks.filter(p => p !== null);
+			log('Valid placemarks: ' + validPlacemarks.length);
+			
+			if (validPlacemarks.length > 0) {
+				const localizedClusterer = new ymaps.Clusterer({
+					preset: 'islands#invertedRedClusterIcons',
+					groupByCoordinates: false,
+					clusterDisableClickZoom: false,
+					clusterHideIconOnBalloonOpen: false,
+					geoObjectHideIconOnBalloonOpen: false
+				});
+				
+				localizedClusterer.add(validPlacemarks);
+				myMap.geoObjects.add(localizedClusterer);
+				
+				// Auto zoom to bounds
+				try {
+					myMap.setBounds(localizedClusterer.getBounds(), {
+						checkZoomRange: true,
+						zoomMargin: 50
+					});
+				} catch(e) { log('Bounds error: ' + e); }
+			}
+		});
+	}
+
+	function switchTab(selectedSlug) {
+		// Toggle Tabs UI
 		allSlugs.forEach(slug => {
 			const content = document.getElementById('tab-' + slug);
 			const btn = document.getElementById('btn-' + slug);
 			
 			if (content && btn) {
 				if (slug === selectedSlug) {
-					// Show
 					content.classList.remove('hidden');
 					content.classList.add('block');
-					// Active Btn
 					btn.classList.remove('text-gray-500', 'hover:text-gray-900');
 					btn.classList.add('bg-white', 'text-[#D32F2F]', 'shadow-sm');
 				} else {
-					// Hide
 					content.classList.remove('block');
 					content.classList.add('hidden');
-					// Inactive Btn
 					btn.classList.remove('bg-white', 'text-[#D32F2F]', 'shadow-sm');
 					btn.classList.add('text-gray-500', 'hover:text-gray-900');
 				}
 			}
 		});
+
+		// Update Map
+		updateMap(selectedSlug);
 	}
 	</script>
 	<?php endif; ?>

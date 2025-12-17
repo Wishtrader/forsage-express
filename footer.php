@@ -149,14 +149,71 @@
 				<div class="container">
 					<div class="py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] lg:text-[16px] text-[#FFF]">
 						<div>&copy; <?php echo date( 'Y' ); ?> ФорсажЭкспресс. Все права защищены.</div>
-						<a href="#" class="hover:text-white transition-colors">Политика конфиденциальности</a>
-						<a href="#" class="hover:text-white transition-colors">Политика обработки cookie</a>
+						<a href="<?php echo home_url( '/privacy-policy' ); ?>" class="hover:text-white transition-colors">Политика конфиденциальности</a>
+						<a href="<?php echo home_url( '/cookie-policy' ); ?>" class="hover:text-white transition-colors">Политика обработки cookie</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
+
+	<!-- Cookie Consent Popup -->
+	<div id="cookie-banner" class="fixed bottom-0 left-0 w-full md:w-[853px] md:h-[188px] mx-auto bg-white z-[10000] border-t-2 border-[#D32F2F] shadow-[0_-10px_40px_rgba(0,0,0,0.15)] transition-transform duration-500 translate-y-[120%] px-4 py-6 md:py-8 font-manrope">
+		<div class="container mx-auto">
+			<div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12">
+				
+				<!-- Text Content -->
+				<div class="flex-1 text-center lg:text-left">
+					<div class="text-[20px] md:text-[22px] font-medium text-[#111827] mb-3 flex items-center justify-center lg:justify-start gap-2">
+						<span>Мы используем файлы cookies</span>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/coolicon.svg" alt="Cookie" class="w-6 h-6">
+					</div>
+					<p class="text-[15px] md:text-[16px] leading-[1.6] text-[#374151]">
+						Этот сайт применяет файлы cookies для корректной работы, анализа использования и улучшения качества сервиса. Вы можете принять все файлы cookies или ограничиться только необходимыми.
+					</p>
+				</div>
+
+				<!-- Buttons -->
+				<div class="flex flex-col gap-3 w-full sm:w-[280px] shrink-0">
+					<button id="cookie-accept" class="w-full bg-[#D32F2F] hover:bg-[#B91C1C] text-white font-medium py-3.5 rounded-lg transition-colors shadow-sm text-[16px]">
+						Принять
+					</button>
+					<button id="cookie-decline" class="w-full bg-white border border-[#D32F2F] text-[#111827] font-medium py-3.5 rounded-lg hover:bg-red-50 transition-colors text-[16px]">
+						Отклонить
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const banner = document.getElementById('cookie-banner');
+		const acceptBtn = document.getElementById('cookie-accept');
+		const declineBtn = document.getElementById('cookie-decline');
+		
+		// Check if user has already made a choice
+		if (!localStorage.getItem('cookie_consent')) {
+			// Show banner with delay
+			setTimeout(() => {
+				banner.classList.remove('translate-y-[120%]');
+			}, 1000);
+		}
+
+		// Handle Accept
+		acceptBtn.addEventListener('click', function() {
+			localStorage.setItem('cookie_consent', 'accepted');
+			banner.classList.add('translate-y-[120%]');
+		});
+
+		// Handle Decline
+		declineBtn.addEventListener('click', function() {
+			localStorage.setItem('cookie_consent', 'declined');
+			banner.classList.add('translate-y-[120%]');
+		});
+	});
+	</script>
 
 <?php wp_footer(); ?>
 

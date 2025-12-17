@@ -2,59 +2,51 @@
 /**
  * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
  * @package Forsage
  */
 
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main class="min-h-screen relative flex items-center justify-center bg-gray-50 overflow-hidden">
+	<!-- Background Image (Bus Station) -->
+	<div class="absolute inset-0 z-0">
+		<img src="<?php echo get_template_directory_uri(); ?>/assets/station.png" alt="Bus Station" class="w-full h-full object-cover">
+		<!-- Overlay for better text readability if needed, though image seems light -->
+		<div class="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
+	</div>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'forsage' ); ?></h1>
-			</header><!-- .page-header -->
+	<!-- Content Container -->
+	<div class="relative z-10 container mx-auto px-4 text-center max-w-4xl pt-20">
+		
+		<!-- 404 Sign Board Look -->
+		<div class="mb-8 inline-block">
+			<!-- Simulating the LED board look from the image -->
+			<div class="bg-[#8B8B8B] rounded-lg p-1 shadow-lg mx-auto w-[200px]">
+				<div class="bg-[#515151] rounded border-2 border-[#6B6B6B] py-2 px-8 shadow-inner">
+					<h1 class="text-[#EBCBA6] text-6xl font-mono tracking-widest font-bold drop-shadow-[0_0_5px_rgba(235,203,166,0.6)]">404</h1>
+				</div>
+			</div>
+		</div>
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'forsage' ); ?></p>
+		<!-- Title -->
+		<h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 drop-shadow-sm">
+			Страница не найдена
+		</h2>
 
-					<?php
-					get_search_form();
+		<!-- Description -->
+		<p class="text-gray-700 md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
+			К сожалению, запрашиваемая страница недоступна.<br>
+			Возможно, страница была удалена, ссылка устарела или адрес указан с ошибкой.
+		</p>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+		<!-- Button -->
+		<a href="<?php echo home_url(); ?>" class="inline-block bg-[#D32F2F] text-white font-bold text-lg px-10 py-4 rounded-xl shadow-lg hover:bg-[#B71C1C] transition-transform hover:scale-105">
+			Перейти на главную
+		</a>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'forsage' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$forsage_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'forsage' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$forsage_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+	</div>
+</main>
 
 <?php
 get_footer();
