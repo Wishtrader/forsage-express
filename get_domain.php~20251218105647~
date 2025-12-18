@@ -1,0 +1,1 @@
+<?php require("wp-load.php"); echo "DOMAIN: " . parse_url(get_option("siteurl"), PHP_URL_HOST); ?>

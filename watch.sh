@@ -4,7 +4,7 @@
 HOST="178.172.244.107"
 USER="domen10"
 PASS="@654321@"
-RDIR="/wp-content/themes/forsage"
+RDIR="wp-content/themes/forsage"
 LDIR=$(pwd)
 
 # Cleanup function

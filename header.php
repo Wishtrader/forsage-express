@@ -18,6 +18,11 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+	</style>
 </head>
 
 <body <?php body_class( 'font-manrope antialiased text-[#111827]' ); ?>>
@@ -28,11 +33,11 @@
 	<header id="masthead" class="bg-white font-manrope relative">
 		<?php
 		$menu_items = [
-			['title' => 'Маршруты', 'url' => '#routes'],
-			['title' => 'Услуги', 'url' => '#services'],
-			['title' => 'Преимущества', 'url' => '#advantages'],
-			['title' => 'FAQ', 'url' => '#faq'],
-			['title' => 'Контакты', 'url' => '#contacts'],
+			['title' => 'Маршруты', 'url' => home_url('/#routes')],
+			['title' => 'Услуги', 'url' => home_url('/#services')],
+			['title' => 'Преимущества', 'url' => home_url('/#advantages')],
+			['title' => 'FAQ', 'url' => home_url('/#faq')],
+			['title' => 'Контакты', 'url' => home_url('/#contacts')],
 		];
 		?>
 		<!-- Mobile Header (Visible < md) -->
@@ -59,10 +64,10 @@
 				</div>
 
 				<!-- Phone Row 1 -->
-				<div class="flex items-center justify-between mb-3 px-2">
-					<div class="flex items-center gap-3">
+				<div class="flex items-center justify-between mb-2">
+					<div class="flex items-center lg:gap-3 gap-1">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/mts.png" alt="MTS" class="w-[32px] h-auto">
-						<a href="tel:+375297168556" class="text-[16px] lg:text-[20px] font-bold text-[#111827]">+375 (29) 716-85-56</a>
+						<a href="tel:+375297168556" class="text-[16px] lg:text-[18px] font-medium text-[#111827]">+375 (29) 716-85-56</a>
 					</div>
 					<div class="flex items-center gap-2">
 						<a href="viber://chat?number=%2B375297168556"><img src="<?php echo get_template_directory_uri(); ?>/assets/Viber.svg" class="w-8 h-8"></a>
@@ -72,9 +77,9 @@
 				</div>
 
 				<!-- Phone Row 2 -->
-				<div class="flex items-center gap-3 px-2 mb-1">
+				<div class="flex items-center lg:gap-3 gap-1 mb-1">
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/a1.png" alt="A1" class="w-[32px] h-auto">
-					<a href="tel:+375291935234" class="text-[17px] text-[#111827]">+375 (29) 193-52-34</a>
+					<a href="tel:+375291935234" class="text-[16px] lg:text-[18px] font-medium text-[#111827]">+375 (29) 193-52-34</a>
 				</div>
 			</div>
 		</div>
@@ -99,7 +104,7 @@
 			</nav>
 
 			<div class="mt-auto mb-6">
-				<a href="#booking" class="flex items-center justify-center w-full bg-[#D32F2F] text-white font-medium py-4 rounded-lg text-[16px]">Забронировать место</a>
+				<a href="<?php echo esc_url( home_url( '/#contacts' ) ); ?>" class="flex items-center justify-center w-full bg-[#D32F2F] text-white font-medium py-4 rounded-lg text-[16px]">Забронировать место</a>
 			</div>
 		</div>
 
@@ -137,13 +142,14 @@
 						</div>
 
 						<div>
-							<a href="#booking" class="inline-flex items-center justify-center bg-brand-red text-white px-8 py-3 rounded-md font-medium text-[16px] lg:w-[282px] lg:h-[51px] no-underline hover:bg-brand-red-hover transition-colors shadow-sm">Забронировать место</a>
+							<a href="<?php echo esc_url( home_url( '/#contacts' ) ); ?>" class="inline-flex items-center justify-center bg-brand-red text-white px-8 py-3 rounded-md font-medium text-[16px] lg:w-[282px] lg:h-[51px] no-underline hover:bg-brand-red-hover transition-colors shadow-sm">Забронировать место</a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="py-3 border-t-2 border-t-[#D6232A]">
+			<div id="sticky-nav-placeholder" class="hidden"></div>
+			<div id="sticky-nav" class="py-3 border-t-2 border-t-[#D6232A] bg-white z-[50] transition-all duration-300">
 				<div class="container">
 					<nav id="site-navigation" class="w-full">
 						<ul class="flex justify-center gap-10 list-none m-0 p-0">
@@ -181,5 +187,32 @@
 		if (menuClose) {
 			menuClose.addEventListener('click', closeMenu);
 		}
+
+		// Close menu when a link is clicked
+		const mobileLinks = mobileDrawer.querySelectorAll('a');
+		mobileLinks.forEach(link => {
+			link.addEventListener('click', closeMenu);
+		});
+
+		// Sticky Nav Logic
+		const stickyNav = document.getElementById('sticky-nav');
+		const placeholder = document.getElementById('sticky-nav-placeholder');
+		const navOffset = stickyNav.offsetTop;
+
+		window.addEventListener('scroll', () => {
+			if (window.scrollY >= navOffset) {
+				if (!stickyNav.classList.contains('fixed')) {
+					placeholder.style.height = stickyNav.offsetHeight + 'px';
+					placeholder.classList.remove('hidden');
+					stickyNav.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'shadow-md');
+				}
+			} else {
+				if (stickyNav.classList.contains('fixed')) {
+					placeholder.classList.add('hidden');
+					placeholder.style.height = '0';
+					stickyNav.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'shadow-md');
+				}
+			}
+		});
 	});
 	</script>

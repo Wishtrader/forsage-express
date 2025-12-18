@@ -215,3 +215,52 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/cpt-routes.php';
 
+
+/**
+ * Auto-create Thank You page if missing
+ */
+function forsage_ensure_pages() {
+    $slug = 'thank-you';
+    
+    // Check if page exists (including trash)
+    $pages = get_posts(array(
+        'post_type'   => 'page',
+        'post_status' => array('publish', 'pending', 'draft', 'trash'),
+        'name'        => $slug,
+        'numberposts' => 1
+    ));
+
+    if ( ! empty($pages) ) {
+        $page = $pages[0];
+        // If in trash, restore it
+        if ( $page->post_status === 'trash' ) {
+            wp_untrash_post( $page->ID );
+        }
+        // Ensure it's published
+        if ( $page->post_status !== 'publish' ) {
+            wp_update_post(array(
+                'ID'          => $page->ID,
+                'post_status' => 'publish'
+            ));
+        }
+        $page_id = $page->ID;
+    } else {
+        // Create new page
+        $page_id = wp_insert_post( array(
+            'post_title'    => 'Спасибо',
+            'post_name'     => $slug,
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+        ) );
+    }
+
+    if ( $page_id ) {
+        update_post_meta( $page_id, '_wp_page_template', 'page-thank-you.php' );
+        // Only flush if we just created/modified something critical
+        if ( ! get_option( 'forsage_thank_you_flushed' ) ) {
+            flush_rewrite_rules();
+            update_option( 'forsage_thank_you_flushed', 1 );
+        }
+    }
+}
+add_action( 'init', 'forsage_ensure_pages' );

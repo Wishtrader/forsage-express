@@ -1,9 +1,8 @@
 <?php
-/**
- * Template Name: Thank You Page
- */
+// Template Name: Thank You Page
 
-get_header(); ?>
+get_header(); 
+?>
 
 <main class="site-main relative">
     
@@ -47,6 +46,7 @@ get_header(); ?>
                         <!-- Name Field -->
                         <div class="relative">
                             <input type="text" 
+                                   id="thank-you-name"
                                    value="" 
                                    placeholder="Имя" 
                                    readonly 
@@ -56,6 +56,7 @@ get_header(); ?>
                         <!-- Phone Field -->
                         <div class="relative">
                             <input type="text" 
+                                   id="thank-you-phone"
                                    value="" 
                                    placeholder="Телефон" 
                                    readonly 
@@ -82,3 +83,24 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const nameData = localStorage.getItem('forsage_booking_name');
+    const phoneData = localStorage.getItem('forsage_booking_phone');
+    
+    if (nameData) {
+        const nameField = document.getElementById('thank-you-name');
+        if (nameField) nameField.value = nameData;
+    }
+    
+    if (phoneData) {
+        const phoneField = document.getElementById('thank-you-phone');
+        if (phoneField) phoneField.value = phoneData;
+    }
+    
+    // Optionally clear data after populating
+    // localStorage.removeItem('forsage_booking_name');
+    // localStorage.removeItem('forsage_booking_phone');
+});
+</script>

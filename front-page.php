@@ -23,7 +23,7 @@ get_header();
 				<!-- Left Content (Text) - Spans 5 columns -->
 				<div class="lg:col-span-6 relative z-20">
 					<!-- Badge -->
-					<div class="inline-flex items-center gap-2.5 bg-[#FFF0F3] border rounded-[8px] px-4 py-3 mb-8">
+					<div class="hidden lg:inline-flex items-center gap-2.5 bg-[#FFF0F3] border rounded-[8px] px-4 py-3 mb-8">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/rocket-outline.svg" class="w-[24px] h-[24px] text-[#B81B22]">
 						<span class="text-[#B81B22] text-[13px] md:text-[16px] font-medium">Быстро·Комфортно·Надёжно</span>
 					</div>
@@ -46,7 +46,7 @@ get_header();
 
 				<!-- Right Content (Bus Image) - Spans 7 columns but overflows -->
 				<!-- We position this absolutely relative to the container or grid to control the overflow "out to the right" -->
-				<div class="lg:col-span-6 relative z-10 h-full min-h-[300px] lg:min-h-[500px]">
+				<div class="hidden lg:flex lg:col-span-6 relative z-10 h-full min-h-[300px] lg:min-h-[500px]">
 					<!-- The image needs to scale and positioned to the right -->
 					<div class="absolute right-[-20%] lg:right-[-200px] top-1/2 -translate-y-1/2 w-[140%] lg:w-[1100px] lg:mt-[-80px] max-w-none">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/car.png" alt="Forsage Bus" class="w-full h-auto object-contain drop-shadow-2xl">
@@ -56,19 +56,19 @@ get_header();
 
 			<!-- Search Widget - Positioned at bottom overlapping -->
 			<div class="w-full bottom-[-100px] z-30 hidden md:block">
-				<div class="bg-white rounded-xl shadow-[0_10px_40px_-5px_rgba(0,0,0,0.1)] border border-gray-100 p-2 flex items-center">
+				<div class="bg-white shadow-[0_10px_40px_-5px_rgba(0,0,0,0.1)] border border-gray-100 p-2 flex items-center">
 					
 					<!-- From -->
 					<div class="flex-1 relative px-4 py-2 border-r border-gray-100">
 						<label class="block text-[11px] text-gray-400 mb-1">Откуда?</label>
-						<select class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
+						<select id="desktop-from" class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
 							<option value="Минск">Минск</option>
 							<option value="Чашники">Чашники</option>
 							<option value="Сенно">Сенно</option>
 						</select>
 						
 						<!-- Swap Button Centered on Border -->
-						<button class="absolute top-1/2 -translate-y-1/2 right-[-14px] w-7 h-7 bg-[#FEF2F2] rounded-full border border-white shadow-sm flex items-center justify-center z-10 text-[#D32F2F] hover:bg-red-100">
+						<button id="desktop-swap" class="absolute top-1/2 -translate-y-1/2 right-[-14px] w-7 h-7 bg-[#FEF2F2] rounded-full border border-white shadow-sm flex items-center justify-center z-10 text-[#D32F2F] hover:bg-red-100 transition-transform active:scale-95">
 							<img src="<?php echo get_template_directory_uri(); ?>/assets/Arrow - Swap.svg" class="w-4 h-4">
 						</button>
 					</div>
@@ -76,7 +76,7 @@ get_header();
 					<!-- To -->
 					<div class="flex-1 px-4 py-2 border-r border-gray-100 pl-8">
 						<label class="block text-[11px] text-gray-400 mb-1">Куда?</label>
-						<select class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
+						<select id="desktop-to" class="w-full font-bold text-gray-800 outline-none text-[15px] bg-transparent appearance-none cursor-pointer">
 							<option value="Чашники">Чашники</option>
 							<option value="Минск">Минск</option>
 							<option value="Сенно">Сенно</option>
@@ -115,10 +115,11 @@ get_header();
 
 					<!-- Button -->
 					<div class="pl-2">
-						<button class="bg-[#D32F2F] text-white font-bold py-3.5 px-6 rounded-lg hover:bg-[#B71C1C] transition-colors shadow-sm text-[15px]">
+						<a href="#contacts" class="inline-flex items-center justify-center bg-[#D32F2F] text-white font-bold py-3.5 px-6 rounded-lg hover:bg-[#B71C1C] transition-colors shadow-sm text-[15px] no-underline">
 							Забронировать место
-						</button>
+						</a>
 					</div>
+				
 				</div>
 				<!-- Buttons -->
 					<div class="flex flex-col sm:flex-row gap-4 mt-[24px]">
@@ -132,19 +133,24 @@ get_header();
 			</div>
 			
 			<!-- Mobile Search Widget (Simpler layout) -->
-			<div class="md:hidden mt-8 bg-white rounded-xl shadow-lg border border-gray-100 p-4">
+			<div class="md:hidden lg:mt-8 bg-white rounded-xl shadow-lg border border-gray-100 p-4">
 				<div class="flex flex-col gap-4">
 					<div class="relative">
 						<label class="text-[11px] text-gray-400">Откуда?</label>
-						<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
+						<select id="mobile-from" class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
 							<option value="Минск">Минск</option>
 							<option value="Чашники">Чашники</option>
 							<option value="Сенно">Сенно</option>
 						</select>
+
+						<!-- Mobile Swap Button -->
+						<button id="mobile-swap" class="absolute bottom-[-14px] right-4 w-7 h-7 bg-[#FEF2F2] rounded-full border border-white shadow-sm flex items-center justify-center z-10 text-[#D32F2F] hover:bg-red-100 transition-transform active:scale-95 rotate-90">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/Arrow - Swap.svg" class="w-4 h-4">
+						</button>
 					</div>
-					<div class="relative">
+					<div class="relative pt-2">
 						<label class="text-[11px] text-gray-400">Куда?</label>
-						<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
+						<select id="mobile-to" class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
 							<option value="Чашники">Чашники</option>
 							<option value="Минск">Минск</option>
 							<option value="Сенно">Сенно</option>
@@ -156,6 +162,11 @@ get_header();
 							<input id="mobile-date-when" type="text" class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent" value="24 ноября">
 						</div>
 						<div>
+							<label class="text-[11px] text-gray-400">Обратно?</label>
+							<input id="mobile-date-when" type="text" class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent" value="24 ноября">
+						</div>
+					</div>
+					<div>
 							<label class="text-[11px] text-gray-400">Пассажиры</label>
 							<select class="w-full font-bold border-b border-gray-200 py-2 outline-none bg-transparent appearance-none">
 								<option value="1">1 пассажир</option>
@@ -164,12 +175,15 @@ get_header();
 								<option value="4">4 пассажира</option>
 							</select>
 						</div>
-					</div>
-					<button class="w-full bg-[#D32F2F] text-white font-bold py-3 rounded-lg mt-2">
+					<a href="#contacts" class="w-full flex items-center justify-center bg-[#D32F2F] text-white font-bold py-3 rounded-lg mt-2 no-underline">
 						Забронировать место
-					</button>
+					</a>
 				</div>
 			</div>
+
+			<!-- The mobile image of car -->
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/car.png" alt="Forsage Bus" class="block lg:hidden w-full h-auto object-contain">
+					
 
 	<!-- Flatpickr -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -207,6 +221,77 @@ get_header();
 		flatpickr("#hero-date-when", config);
 		flatpickr("#hero-date-return", { ...config, defaultDate: null });
 		flatpickr("#mobile-date-when", config);
+
+		// Booking Form Date & Time
+		flatpickr("#booking-date", {
+			locale: "ru",
+			enableTime: true,
+			dateFormat: "d.m.Y H:i",
+			time_24hr: true,
+			minDate: "today",
+			disableMobile: "true"
+		});
+
+		// Swap Cities Functionality
+		function initSwap(fromId, toId, btnId) {
+			const fromSelect = document.getElementById(fromId);
+			const toSelect = document.getElementById(toId);
+			const swapBtn = document.getElementById(btnId);
+
+			if (fromSelect && toSelect && swapBtn) {
+				swapBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					const fromVal = fromSelect.value;
+					const toVal = toSelect.value;
+					
+					fromSelect.value = toVal;
+					toSelect.value = fromVal;
+										// Animation effect
+					swapBtn.classList.add('scale-110');
+					setTimeout(() => swapBtn.classList.remove('scale-110'), 200);
+				});
+			}
+		}
+
+		initSwap('desktop-from', 'desktop-to', 'desktop-swap');
+		initSwap('mobile-from', 'mobile-to', 'mobile-swap');
+
+		// Form Validation and Redirect
+		const contactForm = document.getElementById('contact-form');
+		if (contactForm) {
+			contactForm.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				const nameInput = document.getElementById('booking-name');
+				const phoneInput = document.getElementById('booking-phone');
+				const directionInput = document.getElementById('booking-direction');
+				const dateInput = document.getElementById('booking-date');
+				
+				let isValid = true;
+				
+				[nameInput, directionInput, dateInput, phoneInput].forEach(el => {
+					if (!el.value.trim()) {
+						el.classList.add('border-red-500');
+						isValid = false;
+					} else {
+						el.classList.remove('border-red-500');
+					}
+				});
+				
+				if (isValid) {
+					// Save values to localStorage instead of query params
+					localStorage.setItem('forsage_booking_name', nameInput.value.trim());
+					localStorage.setItem('forsage_booking_phone', phoneInput.value.trim());
+					
+					// Redirect without parameters
+					<?php 
+						$ty_page = get_page_by_path('thank-you');
+						$ty_url = $ty_page ? get_permalink($ty_page->ID) : home_url('/?pagename=thank-you');
+					?>
+					window.location.href = "<?php echo esc_url($ty_url); ?>";
+				}
+			});
+		}
 	});
 	</script>
 
@@ -216,7 +301,7 @@ get_header();
 	<section id="routes" class="relative">
 		<div class="container mx-auto px-4">
 			
-			<h2 class="text-[32px] md:text-[40px] font-bold text-center mb-10 text-[#111827]">Регулярные маршруты</h2>
+			<h2 class="text-[28px] md:text-[40px] font-medium text-center mb-10 text-[#111827]">Регулярные маршруты</h2>
 
 			<?php
 			$args = array(
@@ -240,9 +325,9 @@ get_header();
 						$slug = get_post_field( 'post_name', get_the_ID() );
 						if ( $i === 0 ) $first_slug = $slug;
 						
-						$active_class = ( $i === 0 ) ? 'bg-white text-[#D32F2F] shadow-sm' : 'text-gray-500 hover:text-gray-900';
+						$active_class = ( $i === 0 ) ? 'bg-white text-[#D32F2F] shadow-sm underline decoration-2 underline-offset-4' : 'text-gray-500 hover:text-gray-900';
 					?>
-					<button onclick="switchTab('<?php echo esc_js($slug); ?>')" id="btn-<?php echo esc_attr($slug); ?>" class="px-8 py-2.5 rounded-md text-[15px] font-bold transition-all <?php echo $active_class; ?>">
+					<button onclick="switchTab('<?php echo esc_js($slug); ?>')" id="btn-<?php echo esc_attr($slug); ?>" class="lg:px-[72px] py-[13px] rounded-md text-[15px] px-[10px] mx-[10px] lg:mx-0 lg:text-[18px] font-medium transition-all <?php echo $active_class; ?>">
 						<?php the_title(); ?>
 					</button>
 					<?php 
@@ -302,17 +387,17 @@ get_header();
 					<div class="lg:col-span-8 bg-white border border-gray-100 rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
 						<div class="relative pl-10">
 							<!-- Timeline Line -->
-							<div class="absolute left-[11px] top-3 bottom-8 w-[2px] <?php echo $line_color; ?>"></div>
+							<img class="absolute left-[11px] w-[1.5px] top-3 bottom-8" src="<?php echo get_template_directory_uri(); ?>/assets/vline.svg" alt="path">
 
 							<!-- Departure -->
-							<div class="relative mb-10">
-								<div class="absolute left-[-40px] top-1 flex flex-col items-center z-10 bg-white">
-									<div class="w-[24px] h-[24px] border <?php echo $dot_border; ?> rounded-full flex items-center justify-center">
-										<div class="w-2 h-2 <?php echo $dot_color; ?> rounded-full"></div>
+							<div class="relative mb-4">
+								<div class="absolute left-[-53px] top-1 flex flex-col items-center z-10 bg-white">
+									<div class="w-[48px] h-[38px] border border-[#D6232A] rounded-[4px] flex items-center justify-center">
+										<img src="<?php echo get_template_directory_uri(); ?>/assets/Location.svg" alt="location">
 									</div>
 								</div>
-								<div class="text-[12px] text-gray-400 mb-1">Отправление</div>
-								<div class="text-[18px] font-medium text-gray-900 leading-snug max-w-md">
+								<div class="text-[12px] text-gray-400 mb-1 ml-[10px]">Отправление</div>
+								<div class="text-[16px] lg:text-[18px] font-[300] text-[#4B5563] ml-[10px] leading-snug max-w-md">
 									<?php echo nl2br(esc_html($dep_addr)); ?>
 								</div>
 							</div>
@@ -330,13 +415,13 @@ get_header();
 
 							<!-- Arrival -->
 							<div class="relative">
-								<div class="absolute left-[-40px] top-1 flex flex-col items-center z-10 bg-white">
-									<div class="w-[24px] h-[24px] border border-green-200 rounded-full flex items-center justify-center">
-										<div class="w-2 h-2 bg-green-500 rounded-full"></div>
+								<div class="absolute left-[-53px] top-1 flex flex-col items-center z-10 bg-white">
+									<div class="w-[48px] h-[38px] border border-green-200 rounded-[4px] flex items-center justify-center">
+										<img src="<?php echo get_template_directory_uri(); ?>/assets/Location2.svg" alt="location">
 									</div>
 								</div>
-								<div class="text-[12px] text-gray-400 mb-1">Прибытие</div>
-								<div class="text-[18px] font-medium text-gray-900 leading-snug">
+								<div class="text-[12px] text-gray-400 mb-1 ml-[10px]">Прибытие</div>
+								<div class="text-[16px] lg:text-[18px] font-medium text-[#4B5563] ml-[10px] leading-snug">
 									<?php echo nl2br(esc_html($arr_addr)); ?>
 								</div>
 							</div>
@@ -351,14 +436,14 @@ get_header();
 							<div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-white opacity-5 rounded-full pointer-events-none"></div>
 
 							<div class="relative z-10">
-								<div class="text-xs text-white/70 uppercase tracking-wider mb-2">ОТ</div>
-								<div class="text-[42px] font-bold leading-none mb-1"><?php echo esc_html($price); ?></div>
-								<div class="text-sm text-white/70">за место</div>
+								<div class="text-[16px] text-white uppercase tracking-wider mb-2">ОТ</div>
+								<div class="text-[40px] font-semibold leading-none mb-[18px]"><?php echo esc_html($price); ?></div>
+								<div class="text-[16px] text-white">за место</div>
 							</div>
 
-							<button class="relative z-10 w-full bg-white <?php echo $btn_text_color; ?> font-bold py-4 rounded-xl mt-8 hover:bg-gray-50 transition-colors shadow-sm">
+							<a href="#contacts" class="relative z-10 w-full flex items-center justify-center bg-white <?php echo $btn_text_color; ?> font-bold py-4 rounded-xl mt-8 hover:bg-gray-50 transition-colors shadow-sm no-underline">
 								Забронировать место
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -370,16 +455,17 @@ get_header();
 				if( !empty($stops_text) ): 
 				?>
 				<div class="mb-16">
-					<h3 class="text-xl font-bold mb-6 text-gray-900">Остановки по маршруту</h3>
-					<div class="text-[15px] leading-relaxed text-gray-600 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+					<h3 class="text-[18px] lg:text-[24px] font-semibold mb-6 text-gray-900">Остановки по маршруту</h3>
+					<div class="flex items-center flex-wrap gap-1 text-[18px] text-gray-600 bg-gray-50 p-6 rounded-2xl border border-gray-100">
 						<?php 
-						// Split by newline
-						$stops = preg_split('/\r\n|\r|\n/', $stops_text);
-						$s_count = 0;
+						// Split by newline and filter empty
+						$raw_stops = preg_split('/\r\n|\r|\n/', $stops_text);
+						$stops = array_filter($raw_stops, function($value) { return !empty(trim($value)); });
+						$stops = array_values($stops); // Reindex
+						$total_stops = count($stops);
 						
-						foreach( $stops as $stop ) {
+						foreach( $stops as $index => $stop ) {
 							$stop = trim($stop);
-							if ( empty($stop) ) continue;
 							
 							// Check for bold/highlight marker *
 							$is_hl = false;
@@ -387,9 +473,17 @@ get_header();
 								$is_hl = true;
 								$stop = substr($stop, 1); // remove *
 							}
+
+							// Auto-highlight first and last
+							if ( $index === 0 || $index === $total_stops - 1 ) {
+								$is_hl = true;
+							}
 							
-							if ($s_count > 0) {
-								echo '<span class="mx-2 text-gray-300">↔</span>';
+							if ($index > 0) {
+								echo '
+								<span class="mx-2 text-[#D6232A] min-w-[27px]">
+									<img src="' . get_template_directory_uri() . '/assets/line_swap.svg" alt="arrows" class="w-[24px]">
+								</span>';
 							}
 							
 							if ($is_hl) {
@@ -397,7 +491,6 @@ get_header();
 							} else {
 								echo esc_html($stop);
 							}
-							$s_count++;
 						} 
 						?>
 					</div>
@@ -406,13 +499,14 @@ get_header();
 
 				<!-- Schedule Table -->
 				<div>
-					<h3 class="text-xl font-bold mb-8 text-gray-900">Расписание рейсов</h3>
-					<div class="overflow-hidden bg-white border border-gray-100 rounded-2xl shadow-sm">
+					<h3 class="text-[18px] lg:text-[24px] font-semibold mb-8 text-gray-900">Расписание рейсов</h3>
+					<div class="overflow-x-auto bg-white border border-gray-100 rounded-2xl shadow-sm">
+						<div class="min-w-[760px]">
 						<!-- Table Header -->
-						<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 bg-gray-50 border-b border-gray-100">
-							<div class="hidden md:block"></div>
-							<div class="text-center font-bold <?php echo $header_highlight; ?> text-lg"><?php echo esc_html($dep_city); ?></div>
-							<div class="text-center font-bold <?php echo $header_highlight; ?> text-lg"><?php echo esc_html($arr_city); ?></div>
+						<div class="grid grid-cols-3 gap-4 p-6 bg-gray-50 border-b border-gray-100">
+							<div></div>
+							<div class="text-center font-bold <?php echo $header_highlight; ?> text-[16px] lg:text-[24px]"><?php echo esc_html($dep_city); ?></div>
+							<div class="text-center font-bold <?php echo $header_highlight; ?> text-[16px] lg:text-[24px]"><?php echo esc_html($arr_city); ?></div>
 						</div>
 
 						<!-- Table Rows -->
@@ -438,13 +532,13 @@ get_header();
 
 							// Badge styles
 							if ( $is_weekend ) {
-								$badge_class = 'text-white border border-[#B91C1C] bg-[#B91C1C] shadow-sm shadow-red-200';
+								$badge_class = 'flex items-center justify-center lg:w-[204px] lg:h-[46px] text-[18px] lg:text-[20px] text-white border border-[#B91C1C] bg-[#D6232A] shadow-sm shadow-red-200';
 							} else {
-								$badge_class = 'text-[#EF4444] border border-[#FECDD3] bg-[#FFF1F2]';
+								$badge_class = 'flex items-center justify-center lg:w-[204px] lg:h-[46px] text-[18px] lg:text-[20px] font-bold text-[#EF4444] border border-[#FECDD3] ';
 							}
 							
 							// Row Styles
-							$row_classes = 'grid grid-cols-1 md:grid-cols-3 gap-4 p-6 border-b border-gray-100 items-center transition-colors';
+							$row_classes = 'grid grid-cols-3 gap-4 p-6 border-b border-gray-100 items-center transition-colors';
 							if ( $is_today ) {
 								$row_classes .= ' bg-[#FEF2F2] shadow-[inset_3px_0_0_0_#D32F2F]'; // Light red bg + left border effect
 							} else {
@@ -464,6 +558,7 @@ get_header();
 							<div class="text-center md:text-lg font-medium text-gray-800 tracking-wide"><?php echo esc_html($time_b); ?></div>
 						</div>
 						<?php } ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -516,22 +611,20 @@ get_header();
 	<!-- Map Section -->
 	<section class="mb-20">
 		<div class="container mx-auto px-4">
-			<h2 class="text-[32px] md:text-[40px] font-bold text-center mb-10 text-[#111827]">Остановки по маршруту</h2>
+			<h2 class="text-[28px] md:text-[40px] font-medium my-10 lg:my-0 text-center lg:mt-[30px] mb-[10px] lg:mb-10 text-[#111827]">Остановки по маршруту</h2>
 			
 			<div class="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-4">
 				<div id="route-map" class="w-full h-full bg-gray-100"></div>
 			</div>
 			
-			<!-- Debug Log (Temporary) -->
-			<div id="map-debug" class="bg-gray-800 text-green-400 p-4 rounded text-xs font-mono h-32 overflow-y-auto hidden"></div>
 		</div>
 	</section>
 
 	<!-- Services Section -->
-	<section class="py-20 bg-white">
+	<section id="services" class="lg:py-10 bg-white">
 		<div class="container mx-auto px-4">
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Наши услуги</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-4">Наши услуги</h2>
 				<p class="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto">Полный спектр пассажирских перевозок для комфортных и безопасных поездок</p>
 			</div>
 
@@ -645,10 +738,10 @@ get_header();
 	</section>
 
 	<!-- Why Choose Us Section -->
-	<section class="py-20 bg-gray-50">
+	<section id="advantages" class="py-20 bg-gray-50">
 		<div class="container mx-auto px-4">
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Почему выбирают нас</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-4">Почему выбирают нас</h2>
 				<p class="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto">Мы заботимся о каждом пассажире и создаём условия для приятного путешествия</p>
 			</div>
 
@@ -755,7 +848,7 @@ get_header();
 	<section class="py-20 bg-gray-50">
 		<div class="container mx-auto px-4 max-w-[1200px]">
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Правила проезда</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-4">Правила проезда</h2>
 				<p class="text-gray-500 text-lg md:text-xl max-w-4xl mx-auto">
 					Перед поездкой, пожалуйста, ознакомьтесь с основными правилами проезда пассажиров, детей и животных. Подробные условия можно уточнить у оператора при бронировании.
 				</p>
@@ -802,7 +895,7 @@ get_header();
 	<section class="py-20 bg-white">
 		<div class="container mx-auto px-4 max-w-[1200px]">
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827]">Как забронировать поездку</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827]">Как забронировать поездку</h2>
 			</div>
 
 			<div class="relative">
@@ -812,44 +905,44 @@ get_header();
 				<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
 					<!-- Step 1 -->
 					<div class="flex flex-col items-center text-center">
-						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="w-5 h-5">
+						<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="">
 						</div>
-						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Позвоните или оставьте заявку на сайте</h3>
-						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+						<h3 class="text-16 md:text-18 max-w-[217px] font-medium text-gray-900 mb-3 h-12 flex items-center justify-center">Позвоните или оставьте заявку на сайте</h3>
+						<p class="text-[14px] md:text-[16px] text-gray-500 leading-relaxed max-w-[200px]">
 							Свяжитесь с нами удобным способом: телефон, мессенджер, онлайн заявка
 						</p>
 					</div>
 
 					<!-- Step 2 -->
 					<div class="flex flex-col items-center text-center">
-						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/calendar.svg" alt="Calendar" class="w-5 h-5">
+						<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/calendar.svg" alt="Calendar" class="">
 						</div>
-						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Выбор рейса и времени</h3>
-						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+						<h3 class="text-16 md:text-18 max-w-[217px] font-medium text-gray-900 mb-3 h-12 flex items-center justify-center">Выбор рейса и времени</h3>
+						<p class="text-[14px] lg:text-[16px] text-gray-500 leading-relaxed max-w-[200px]">
 							Уточняем маршрут, дату и время отправления
 						</p>
 					</div>
 
 					<!-- Step 3 -->
 					<div class="flex flex-col items-center text-center">
-						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/check.svg" alt="Check" class="w-5 h-5">
+						<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/check.svg" alt="Check" class="">
 						</div>
-						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Подтверждение брони</h3>
-						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+						<h3 class="text-16 md:text-18 max-w-[217px] font-medium text-gray-900 mb-3 h-12 flex items-center justify-center">Подтверждение брони</h3>
+						<p class="text-[14px] lg:text-[16px] text-gray-500 leading-relaxed max-w-[200px]">
 							Резервируем место и отправляем подтверждение
 						</p>
 					</div>
 
 					<!-- Step 4 -->
 					<div class="flex flex-col items-center text-center">
-						<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D32F2F] flex items-center justify-center mb-6 text-[#D32F2F]">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" alt="Bus" class="w-5 h-5">
+						<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" alt="Bus" class="">
 						</div>
-						<h3 class="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center justify-center">Поездка</h3>
-						<p class="text-[14px] text-gray-500 leading-relaxed max-w-[200px]">
+						<h3 class="text-16 md:text-18 max-w-[217px] font-medium text-gray-900 mb-3 h-12 flex items-center justify-center">Поездка</h3>
+						<p class="text-[14px] lg:text-[16px] text-gray-500 leading-relaxed max-w-[200px]">
 							Приезжайте к месту отправления и комфортно путешествуйте
 						</p>
 					</div>
@@ -862,7 +955,7 @@ get_header();
 	<section class="py-20 bg-gray-50">
 		<div class="container mx-auto px-4 max-w-[1200px]">
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Наши автобусы</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-4">Наши автобусы</h2>
 				<p class="text-gray-500 text-lg md:text-xl max-w-4xl mx-auto">
 					Мы подбираем транспорт под вашу задачу — от ежедневных рейсов до поездок для больших групп. Все машины проходят регулярное обслуживание и готовы к дальним поездкам.
 				</p>
@@ -896,10 +989,10 @@ get_header();
 					<!-- Content -->
 					<div class="pl-8 relative border-l-2 border-[#D32F2F]">
 						<div class="absolute -top-1 -left-3 bg-gray-50 py-1">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus2.svg" class="w-6 h-6 text-[#D32F2F] -ml-[6px]">
 						</div>
-						<h3 class="text-2xl font-bold text-gray-900 mb-6">Автобусы для регулярных рейсов</h3>
-						<div class="space-y-4 text-gray-500 leading-relaxed">
+						<h3 class="text-[18px] lg:text-[24px] font-medium text-gray-900 mb-6">Автобусы для регулярных рейсов</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed text-16 lg:text-18">
 							<p>Для ежедневных маршрутов Минск — Чашники и Минск — Сенно мы используем удобные автобусы с аккуратным салоном. В салоне комфортно сидеть даже в дороге, предусмотрены полки для ручной клади и достаточно места для ног.</p>
 							<p>Комфортная посадка, мягкий ход и регулярное обслуживание транспорта позволяют спокойно добираться до работы, учёбы или домой без лишнего стресса.</p>
 						</div>
@@ -913,8 +1006,8 @@ get_header();
 						<div class="absolute -top-1 -right-3 bg-gray-50 py-1">
 							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
 						</div>
-						<h3 class="text-2xl font-bold text-gray-900 mb-6">Автобусы под заказ для групп и мероприятий</h3>
-						<div class="space-y-4 text-gray-500 leading-relaxed">
+						<h3 class="text-[18px] lg:text-[24px] font-medium text-gray-900 mb-6">Автобусы под заказ для групп и мероприятий</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed text-[16px] lg:text-[18px]">
 							<p>Для корпоративных выездов, экскурсий, свадеб и других мероприятий мы предлагаем автобусы под заказ. Мы подбираем транспорт под количество пассажиров и маршрут, чтобы всем было удобно и в салоне, и при посадке.</p>
 							<p>В салоне достаточно места для багажа и личных вещей, а наш водитель заранее продумывает маршрут с учётом времени и остановок.</p>
 						</div>
@@ -970,8 +1063,8 @@ get_header();
 						<div class="absolute -top-1 -left-3 bg-gray-50 py-1">
 							<img src="<?php echo get_template_directory_uri(); ?>/assets/bus.svg" class="w-6 h-6 text-[#D32F2F]">
 						</div>
-						<h3 class="text-2xl font-bold text-gray-900 mb-6">Транспорт для дальних и международных поездок</h3>
-						<div class="space-y-4 text-gray-500 leading-relaxed">
+						<h3 class="text-[18px] md:text-[24px] font-medium text-gray-900 mb-6">Транспорт для дальних и международных поездок</h3>
+						<div class="space-y-4 text-gray-500 leading-relaxed text-[16px] lg:text-[18px]">
 							<p>Для международных рейсов и длительных маршрутов мы используем комфортные автобусы, рассчитанные на долгую дорогу. В салоне удобные сиденья, достаточно места для ног и багажа, чтобы поездка проходила максимально спокойно.</p>
 							<p>Перед выездом транспорт проходит техническую проверку, а водитель заранее знакомится с маршрутом, чтобы вы чувствовали себя уверенно на протяжении всей дороги.</p>
 						</div>
@@ -1035,14 +1128,14 @@ get_header();
 	</script>
 
 	<!-- FAQ Section -->
-	<section class="py-20 bg-white">
+	<section id="faq" class="py-20 bg-white">
 		<div class="container mx-auto px-4 max-w-[1200px]">
 			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 				
 				<!-- Left Column: Title & Desc -->
 				<div class="lg:col-span-4">
-					<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-6 leading-tight">Часто задаваемые вопросы</h2>
-					<p class="text-gray-500 text-lg leading-relaxed">
+					<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-6 leading-tight">Часто задаваемые вопросы</h2>
+					<p class="text-gray-500 text-[18px] md:text-[20px] leading-relaxed">
 						Не нашли ответ на свой вопрос? Свяжитесь с нами любым удобным способом, и мы с радостью вам поможем!
 					</p>
 				</div>
@@ -1052,7 +1145,7 @@ get_header();
 					<!-- Item 1 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как забронировать место в автобусе?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как забронировать место в автобусе?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1065,7 +1158,7 @@ get_header();
 					<!-- Item 2 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие способы оплаты вы принимаете?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие способы оплаты вы принимаете?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1078,7 +1171,7 @@ get_header();
 					<!-- Item 3 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Можно ли вернуть билет?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Можно ли вернуть билет?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1091,7 +1184,7 @@ get_header();
 					<!-- Item 4 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Есть ли багажное отделение?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Есть ли багажное отделение?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1104,7 +1197,7 @@ get_header();
 					<!-- Item 5 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как заказать автобус для группы?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Как заказать автобус для группы?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1117,7 +1210,7 @@ get_header();
 					<!-- Item 6 -->
 					<div class="border-b border-gray-100">
 						<button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left group">
-							<span class="text-lg font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие документы нужны для поездки в Россию?</span>
+							<span class="text-[16px] md:text-[18px] font-medium text-gray-900 group-hover:text-[#D32F2F] transition-colors">Какие документы нужны для поездки в Россию?</span>
 							<svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 							</svg>
@@ -1148,17 +1241,17 @@ get_header();
 	</script>
 
 	<!-- Contact Us Section -->
-	<section id="contacts" class="py-20 bg-gray-50">
+	<section id="contacts" class="lg:py-20 py-8 bg-gray-50">
 		<div class="container mx-auto px-4 max-w-[1200px]">
 			<!-- Header -->
 			<div class="text-center mb-16">
-				<h2 class="text-[32px] md:text-[40px] font-bold text-[#111827] mb-4">Свяжитесь с нами</h2>
+				<h2 class="text-[28px] md:text-[40px] font-medium text-[#111827] mb-4">Свяжитесь с нами</h2>
 				<p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">
 					Готовы помочь вам в любое время. Выберите удобный способ связи или оставьте заявку
 				</p>
 			</div>
 
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+			<div class="flex flex-col flex-col-reverse lg:grid lg:grid-cols-2 gap-12 items-start">
 				
 				<!-- Left Column: Info & Messengers -->
 				<div class="space-y-10">
@@ -1167,11 +1260,11 @@ get_header();
 						<!-- Address -->
 						<div class="flex items-start gap-6">
 							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/Location.svg" alt="Address" class="w-5 h-5">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/Location.svg" alt="Address" class="">
 							</div>
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Наш офис</p>
-								<p class="text-gray-900 font-medium text-lg leading-snug">
+								<p class="text-gray-900 font-medium text-[16px] lg:text-[18px] leading-snug">
 									ул. Братская д.11, пом. 380 г. Минск<br>
 									ИН 220065
 								</p>
@@ -1180,19 +1273,19 @@ get_header();
 
 						<!-- Phones -->
 						<div class="flex items-start gap-6">
-							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="w-5 h-5">
+							<div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/phone.svg" alt="Phone" class="">
 							</div>
 							<div>
 								<p class="text-gray-400 text-sm mb-2">Телефон</p>
 								<div class="space-y-3">
 									<a href="tel:+375297168556" class="flex items-center gap-3 text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/mts.svg" alt="MTS" class="w-5 h-5 object-contain">
-										<span>+375 (29) 716-85-56</span>
+										<span class="text-[16px] lg:text-[18px]">+375 (29) 716-85-56</span>
 									</a>
 									<a href="tel:+375291935234" class="flex items-center gap-3 text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/a1.svg" alt="A1" class="w-5 h-5 object-contain">
-										<span>+375 (29) 193-52-34</span>
+										<span class="text-[16px] lg:text-[18px]">+375 (29) 193-52-34</span>
 									</a>
 								</div>
 							</div>
@@ -1200,12 +1293,12 @@ get_header();
 
 						<!-- Email -->
 						<div class="flex items-start gap-6">
-							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/mail.svg" alt="Email" class="w-5 h-5">
+							<div class="w-12 h-12 flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/mail.svg" alt="Email" class="">
 							</div>
 							<div>
 								<p class="text-gray-400 text-sm mb-1">E-mail</p>
-								<a href="mailto:info@forsazhexpress.by" class="text-gray-900 font-medium text-lg hover:text-[#D32F2F] transition">
+								<a href="mailto:info@forsazhexpress.by" class="text-gray-900 font-medium text-[16px] lg:text-[18px] hover:text-[#D32F2F] transition">
 									info@forsazhexpress.by
 								</a>
 							</div>
@@ -1213,12 +1306,12 @@ get_header();
 
 						<!-- Working Hours -->
 						<div class="flex items-start gap-6">
-							<div class="w-12 h-12 rounded-full border-2 border-[#D32F2F] flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/clock.svg" alt="Time" class="w-5 h-5">
+							<div class="w-12 h-12 flex items-center justify-center flex-shrink-0 text-[#D32F2F] bg-white">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/clock.svg" alt="Time" class="">
 							</div>
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Режим работы</p>
-								<p class="text-gray-900 font-medium text-lg">
+								<p class="text-gray-900 font-medium text-[16px] lg:text-[18px]">
 									Ежедневно: 08:00 — 22:00
 								</p>
 								<p class="text-gray-400 text-sm mt-1">Онлайн-бронирование: 24/7</p>
@@ -1229,19 +1322,19 @@ get_header();
 					<!-- Messengers Block -->
 					<div class="bg-[#D32F2F] rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
 						<div class="relative z-10">
-							<h3 class="text-xl font-bold mb-2">Быстрая связь через мессенджеры</h3>
-							<p class="text-red-100 text-sm mb-6">Напишите нам в любой удобный мессенджер — ответим в течение 5 минут</p>
+							<h3 class="text-[18px] lg:text-[20px] text-center lg:text-left font-bold mb-2">Быстрая связь через мессенджеры</h3>
+							<p class="text-red-100 text-center lg:text-left text-sm mb-6">Напишите нам в любой удобный мессенджер — ответим в течение 5 минут</p>
 							
 							<div class="flex flex-wrap gap-4">
-								<a href="#" class="flex items-center gap-2 bg-white text-[#7360F2] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+								<a href="viber://chat?number=%2B375297168556" class="flex w-full lg:w-auto items-center gap-2 bg-white text-[#7360F2] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition lg:min-w-[152px] justify-center">
 									<img src="<?php echo get_template_directory_uri(); ?>/assets/Viber.svg" alt="Viber" class="w-5 h-5">
 									<span class="text-gray-900">Viber</span>
 								</a>
-								<a href="#" class="flex items-center gap-2 bg-white text-[#0088CC] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+								<a href="https://t.me/forsazhexpress" class="flex w-full lg:w-auto items-center gap-2 bg-white text-[#0088CC] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition lg:min-w-[152px] justify-center">
 									<img src="<?php echo get_template_directory_uri(); ?>/assets/Telegram.svg" alt="Telegram" class="w-5 h-5">
 									<span class="text-gray-900">Telegram</span>
 								</a>
-								<a href="#" class="flex items-center gap-2 bg-white text-[#25D366] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition min-w-[120px] justify-center">
+								<a href="https://wa.me/79297168556" class="flex w-full lg:w-auto items-center gap-2 bg-white text-[#25D366] px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition lg:min-w-[152px] justify-center">
 									<img src="<?php echo get_template_directory_uri(); ?>/assets/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5">
 									<span class="text-gray-900">WhatsApp</span>
 								</a>
@@ -1252,20 +1345,20 @@ get_header();
 				</div>
 
 				<!-- Right Column: Form -->
-				<div class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-8 md:p-10">
+				<div id="booking" class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-8 md:p-10">
 					<h3 class="text-2xl font-bold text-gray-900 mb-2">Оставьте заявку</h3>
 					<p class="text-gray-500 mb-8">Заполните форму, и мы свяжемся с вами в ближайшее время</p>
 					
-					<form class="space-y-6">
+					<form id="contact-form" class="space-y-6">
 						<div>
 							<label class="block text-gray-700 font-medium mb-2 pl-1">Ваше имя</label>
-							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="">
+							<input id="booking-name" type="text" name="name" class="w-full bg-[#E5E7EB] border-2 border-transparent rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="" required>
 						</div>
 						
 						<div>
 							<label class="block text-gray-700 font-medium mb-2 pl-1">Направление</label>
 							<div class="relative">
-								<select class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none appearance-none transition cursor-pointer">
+								<select id="booking-direction" name="direction" class="w-full bg-[#E5E7EB] border-2 border-transparent rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none appearance-none transition cursor-pointer" required>
 									<option value="">Выберите направление</option>
 									<option value="minsk-chashniki">Минск — Чашники</option>
 									<option value="chashniki-minsk">Чашники — Минск</option>
@@ -1280,15 +1373,15 @@ get_header();
 						
 						<div>
 							<label class="block text-gray-700 font-medium mb-2 pl-1">Дата и время</label>
-							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="дд.мм.гггг">
+							<input id="booking-date" type="text" name="date" class="w-full bg-[#E5E7EB] border-2 border-transparent rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="дд.мм.гггг чч:мм" required>
 						</div>
 						
 						<div>
 							<label class="block text-gray-700 font-medium mb-2 pl-1">Телефон или мессенджер</label>
-							<input type="text" class="w-full bg-[#E5E7EB] border-none rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="">
+							<input id="booking-phone" type="text" name="phone" class="w-full bg-[#E5E7EB] border-2 border-transparent rounded-xl px-5 py-4 text-gray-900 focus:ring-2 focus:ring-[#D32F2F] outline-none transition" placeholder="" required>
 						</div>
 						
-						<button type="button" class="w-full bg-[#D32F2F] text-white font-bold text-lg rounded-xl py-4 hover:bg-[#B71C1C] transition shadow-lg mt-4">
+						<button type="submit" class="w-full bg-[#D32F2F] text-white font-bold text-lg rounded-xl py-4 hover:bg-[#B71C1C] transition shadow-lg mt-4">
 							Отправить заявку
 						</button>
 					</form>
@@ -1302,18 +1395,13 @@ get_header();
 
 
 
-	<!-- Removed empty apikey parameter to enable Dev Mode defaults -->
-	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=0ec14044-dbfb-4b4b-b224-b1fb047a9f6e" type="text/javascript"></script>
 	<script>
 	const allSlugs = <?php echo json_encode($all_slugs_js); ?>;
 	const routesData = <?php echo json_encode($routes_map_data); ?>;
-	const debugEl = document.getElementById('map-debug');
 	
 	function log(msg) {
 		console.log(msg);
-		// Uncomment to show debug on screen
-		// debugEl.classList.remove('hidden');
-		// debugEl.innerHTML += "<div>" + msg + "</div>";
 	}
 
 	let myMap = null;
@@ -1338,68 +1426,95 @@ get_header();
 		}
 	}
 
-	function updateMap(slug) {
-		if (!myMap) return;
+	async function updateMap(slug) {
+		if (!myMap) {
+			log('updateMap failed: myMap is null');
+			return;
+		}
 		
 		myMap.geoObjects.removeAll();
 		
 		const stops = routesData[slug];
 		log('Updating map for slug: ' + slug + '. Stops found: ' + (stops ? stops.length : 0));
 		
-		if (!stops || stops.length === 0) return;
+		if (!stops || stops.length === 0) {
+			log('No stops for slug: ' + slug);
+			return;
+		}
 
-		// Async add markers via Geocoder
-		const promises = stops.map(stopName => {
-			// Add 'Беларусь' to context to help geocoder
-			const query = stopName + " Беларусь";
+		log('Starting sequential geocoding...');
+		const validResults = [];
+
+		// Sequential geocoding with delay to avoid rate limits
+		for (let i = 0; i < stops.length; i++) {
+			const stopName = stops[i];
+			const query = stopName + ", Беларусь";
 			
-			return ymaps.geocode(query).then(res => {
+			try {
+				const res = await ymaps.geocode(query);
 				const firstGeoObject = res.geoObjects.get(0);
+				
 				if (firstGeoObject) {
 					const coords = firstGeoObject.geometry.getCoordinates();
-					log('Geocoded: ' + stopName + ' -> ' + coords);
+					log('Geocoded [' + i + ']: ' + stopName + ' -> ' + coords);
 					
 					const placemark = new ymaps.Placemark(coords, {
 						balloonContentHeader: stopName,
-						balloonContentBody: 'Остановка'
+						balloonContentBody: 'Остановка по маршруту: ' + stopName,
+						hintContent: stopName,
+						iconContent: (i + 1)
 					}, {
-						preset: 'islands#redDotIcon'
+						preset: 'islands#redIcon', // Better for iconContent
+						iconColor: '#D32F2F'
 					});
-					return placemark;
+					
+					validResults.push({ placemark, coords, order: i });
+					myMap.geoObjects.add(placemark);
+				} else {
+					log('Geocoded FAILED (no result) [' + i + ']: ' + stopName);
 				}
-				log('Geocoded FAILED (no result): ' + stopName);
-				return null;
-			}).catch(err => {
-				log('Geocoded ERROR: ' + stopName + ' ' + err);
-				return null;
-			});
-		});
-
-		Promise.all(promises).then(placemarks => {
-			const validPlacemarks = placemarks.filter(p => p !== null);
-			log('Valid placemarks: ' + validPlacemarks.length);
-			
-			if (validPlacemarks.length > 0) {
-				const localizedClusterer = new ymaps.Clusterer({
-					preset: 'islands#invertedRedClusterIcons',
-					groupByCoordinates: false,
-					clusterDisableClickZoom: false,
-					clusterHideIconOnBalloonOpen: false,
-					geoObjectHideIconOnBalloonOpen: false
-				});
-				
-				localizedClusterer.add(validPlacemarks);
-				myMap.geoObjects.add(localizedClusterer);
-				
-				// Auto zoom to bounds
+			} catch (err) {
+				let errMsg = 'Unknown Error';
 				try {
-					myMap.setBounds(localizedClusterer.getBounds(), {
+					errMsg = JSON.stringify(err);
+				} catch(e) {
+					errMsg = err.toString();
+				}
+				log('Geocoded ERROR [' + i + ']: ' + stopName + ' - ' + errMsg);
+			}
+			
+			// Small delay between requests
+			await new Promise(resolve => setTimeout(resolve, 100));
+		}
+
+		log('Geocoding finished. Valid: ' + validResults.length);
+		
+		if (validResults.length > 1) {
+			const coordsArray = validResults.map(r => r.coords);
+			const myPolyline = new ymaps.Polyline(coordsArray, {
+				balloonContent: "Маршрут"
+			}, {
+				strokeColor: "#D32F2F",
+				strokeWidth: 4,
+				strokeOpacity: 0.7
+			});
+			myMap.geoObjects.add(myPolyline);
+			log('Polyline added.');
+		}
+		
+		if (validResults.length > 0) {
+			// Auto zoom to bounds
+			try {
+				const bounds = myMap.geoObjects.getBounds();
+				if (bounds) {
+					myMap.setBounds(bounds, {
 						checkZoomRange: true,
 						zoomMargin: 50
 					});
-				} catch(e) { log('Bounds error: ' + e); }
-			}
-		});
+					log('Map bounds updated.');
+				}
+			} catch(e) { log('Bounds error: ' + e); }
+		}
 	}
 
 	function switchTab(selectedSlug) {
@@ -1413,11 +1528,11 @@ get_header();
 					content.classList.remove('hidden');
 					content.classList.add('block');
 					btn.classList.remove('text-gray-500', 'hover:text-gray-900');
-					btn.classList.add('bg-white', 'text-[#D32F2F]', 'shadow-sm');
+					btn.classList.add('bg-white', 'text-[#D32F2F]', 'shadow-sm', 'underline', 'decoration-2', 'underline-offset-4');
 				} else {
 					content.classList.remove('block');
 					content.classList.add('hidden');
-					btn.classList.remove('bg-white', 'text-[#D32F2F]', 'shadow-sm');
+					btn.classList.remove('bg-white', 'text-[#D32F2F]', 'shadow-sm', 'underline', 'decoration-2', 'underline-offset-4');
 					btn.classList.add('text-gray-500', 'hover:text-gray-900');
 				}
 			}

@@ -13,7 +13,7 @@
 
 	<footer id="colophon" class="font-manrope mt-auto">
 		<!-- Top Section: Promo -->
-		<div class="bg-white py-10">
+		<div class="hidden md:block bg-white py-10">
 			<div class="container">
 				<div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
 					<div class="shrink-0">
@@ -29,13 +29,31 @@
 			</div>
 		</div>
 
+		<!-- Top Section: Promo Mobile -->
+		<div class="md:hidden bg-white pt-4 pb-0">
+			<div class="container">
+				<div class="flex items-center justify-between gap-1>
+					
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/logo.svg" alt="<?php bloginfo( 'name' ); ?>" class="w-full max-w-[100px] h-auto block">
+						</a>
+						<p class="text-[#000] text-[13px]">Комфортные междугородние перевозки между городом Минском и Витебской областью</p>
+					
+					
+				</div>
+				<div class="text-center md:text-left">
+						<h2 class="text-[#D6232A] font-semibold text-[18px] mt-4 mb-4">Наши партнеры равняются на нас</h2>
+					</div>
+			</div>
+		</div>
+
 		<!-- Main Footer Section -->
 		<div class="bg-[#111827] text-white pt-16 pb-12 lg:pb-[100px]">
 			<div class="container">
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 lg:flex">
+				<div class="flex flex-col lg:grid lg:grid-flow-col lg:grid-cols-7 gap-x-6 gap-y-12">
 					
 					<!-- Col 1: Navigation -->
-					<div>
+					<div class="hidden lg:block lg:col-span-1">
 						<h3 class="text-[18px] lg:text-[20px] text-white font-medium mb-6">Навигация</h3>
 						<ul class="flex flex-col gap-4 text-[#FFF] text-[15px] lg:text-[18px]">
 							<li><a href="#routes" class="hover:text-brand-red transition-colors">Маршруты</a></li>
@@ -47,7 +65,7 @@
 					</div>
 
 					<!-- Col 2: Services -->
-					<div>
+					<div class="hidden lg:block lg:col-span-2 lg:pl-12">
 						<h3 class="text-[18px] text-white lg:text-[20px] font-medium mb-6">Услуги</h3>
 						<ul class="flex flex-col gap-4 text-[#FFF] text-[15px] lg:text-[18px] text-nowrap">
 							<li><a href="#" class="hover:text-brand-red transition-colors">Регулярные рейсы</a></li>
@@ -60,7 +78,7 @@
 					</div>
 
 					<!-- Col 3: Contacts -->
-					<div>
+					<div class="lg:max-w-[384px] lg:w-full lg:col-span-2">
 						<h3 class="text-[18px] lg:text-[20px] text-white font-medium mb-6">Контакты</h3>
 						<div class="flex flex-col gap-6">
 							<p class="text-[14px] lg:text-[18px] text-white mb-2">Общество с ограниченной ответственностью "Форсажэкспресс"</p>
@@ -75,7 +93,7 @@
 							</div>
 
 							<!-- Phone -->
-							<div class="flex gap-4">
+							<div class="flex gap-4 w-full lg:w-max-[284px]">
 								<img src="<?php echo get_template_directory_uri(); ?>/assets/wphone.svg" class="w-[43px] h-[43px]"> 
 								<div class="flex flex-col w-full">
 									<span class="text-[#FFF] text-[12px] mb-1">Телефон</span>
@@ -85,16 +103,16 @@
 											<div class="bg-white h-[32px] w-[32px] flex items-center justify-center">
 												<img src="<?php echo get_template_directory_uri(); ?>/assets/mts.png" class="w-[32px] h-auto">
 											</div>
-											<div class="flex items-center">
+											<div class="flex flex-col lg:flex-row items-center">
 												<a href="tel:+375297168556" class="text-white text-[14px] lg:text-[18px] hover:text-brand-red transition-colors mr-[6px] text-nowrap">+375 (29) 716-85-56</a>
-												<div class="flex gap-1.5 ml-1">
+												<div class="flex gap-1.5 ml-1 -mb-[20px] lg:mt-0">
 													<a href="viber://chat?number=%2B375297168556"><img src="<?php echo get_template_directory_uri(); ?>/assets/Viber.svg" class="min-w-[32px] min-h-[32px]"></a>
 													<a href="https://wa.me/375297168556"><img src="<?php echo get_template_directory_uri(); ?>/assets/WhatsApp.svg" class="min-w-[32px] min-h-[32px]"></a>
 													<a href="https://t.me/+375297168556"><img src="<?php echo get_template_directory_uri(); ?>/assets/Telegram.svg" class="min-w-[32px] min-h-[32px]"></a>
 												</div>
 											</div>
 										</div>
-										<div class="flex items-center gap-2">
+										<div class="flex items-center gap-2 mt-2 lg:mt-0">
 											<div class="bg-white h-[32px] w-[32px] flex items-center justify-center">
 												<img src="<?php echo get_template_directory_uri(); ?>/assets/a1.svg" class="w-[32px] h-auto">
 											</div>
@@ -116,7 +134,7 @@
 					</div>
 
 					<!-- Col 4: License -->
-					<div class="ml-[32px]">
+					<div class="lg:ml-[32px] lg:col-span-2 lg:pl-12">
 						<h3 class="text-[18px] lg:text-[20px] text-white font-medium mb-6">Лицензия</h3>
 						<div class="flex flex-col gap-5">
 							<div class="flex flex-col">
@@ -159,23 +177,23 @@
 </div><!-- #page -->
 
 	<!-- Cookie Consent Popup -->
-	<div id="cookie-banner" class="fixed bottom-0 left-0 w-full md:w-[853px] md:h-[188px] mx-auto bg-white z-[10000] border-t-2 border-[#D32F2F] shadow-[0_-10px_40px_rgba(0,0,0,0.15)] transition-transform duration-500 translate-y-[120%] px-4 py-6 md:py-8 font-manrope">
+	<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 mx-auto lg:w-[852px] lg:h-[188px] bg-white z-[10000] border-2 border-[#D32F2F] transition-transform duration-500 translate-y-[150%] px-4 py-6 md:py-8 font-manrope">
 		<div class="container mx-auto">
 			<div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12">
 				
 				<!-- Text Content -->
 				<div class="flex-1 text-center lg:text-left">
-					<div class="text-[20px] md:text-[22px] font-medium text-[#111827] mb-3 flex items-center justify-center lg:justify-start gap-2">
+					<div class="text-[16px] md:text-[18px] font-medium text-[#111827] mb-3 flex items-center justify-center lg:justify-start gap-2">
 						<span>Мы используем файлы cookies</span>
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/coolicon.svg" alt="Cookie" class="w-6 h-6">
 					</div>
-					<p class="text-[15px] md:text-[16px] leading-[1.6] text-[#374151]">
+					<p class="text-[16px] md:text-[18px] leading-[1.4] text-[#111827]">
 						Этот сайт применяет файлы cookies для корректной работы, анализа использования и улучшения качества сервиса. Вы можете принять все файлы cookies или ограничиться только необходимыми.
 					</p>
 				</div>
 
 				<!-- Buttons -->
-				<div class="flex flex-col gap-3 w-full sm:w-[280px] shrink-0">
+				<div class="flex flex-col gap-3 w-full sm:w-[270px] shrink-0">
 					<button id="cookie-accept" class="w-full bg-[#D32F2F] hover:bg-[#B91C1C] text-white font-medium py-3.5 rounded-lg transition-colors shadow-sm text-[16px]">
 						Принять
 					</button>
@@ -197,20 +215,20 @@
 		if (!localStorage.getItem('cookie_consent')) {
 			// Show banner with delay
 			setTimeout(() => {
-				banner.classList.remove('translate-y-[120%]');
+				banner.classList.remove('translate-y-[150%]');
 			}, 1000);
 		}
 
 		// Handle Accept
 		acceptBtn.addEventListener('click', function() {
 			localStorage.setItem('cookie_consent', 'accepted');
-			banner.classList.add('translate-y-[120%]');
+			banner.classList.add('translate-y-[150%]');
 		});
 
 		// Handle Decline
 		declineBtn.addEventListener('click', function() {
 			localStorage.setItem('cookie_consent', 'declined');
-			banner.classList.add('translate-y-[120%]');
+			banner.classList.add('translate-y-[150%]');
 		});
 	});
 	</script>
